@@ -7,3 +7,5 @@ public/
 .deploy*/
 package-lock.json
 .idea/
+themes/hueman/node_modules
+themes/hueman/package-lock.json
