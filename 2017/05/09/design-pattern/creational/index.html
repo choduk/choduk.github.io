@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Design Pattern - 생성패턴 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="design pattern,creational" />
+    
+    <meta name="description" content="생성 패턴이란?인스턴스의 생성/합성 방법을 추상화하여 시스템이 어떤 서브클래스를 사용하지에 대한 정보를 캡슐화 누가, 언제, 무엇을, 어떻게 생성할 것인지 결정하는 데 유연성을 확보할 수 있다   1. Factory Method 객체를 생성하기 위해 인터페이스를 정의하지만, 어떤 인스턴스를 생성할지에 대한 결정은 서브클래스에게 위임  구조 활용 생성할 객체">
+<meta name="keywords" content="design pattern,creational">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern - 생성패턴">
+<meta property="og:url" content="http://choduk.github.io/2017/05/09/design-pattern/creational/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="생성 패턴이란?인스턴스의 생성/합성 방법을 추상화하여 시스템이 어떤 서브클래스를 사용하지에 대한 정보를 캡슐화 누가, 언제, 무엇을, 어떻게 생성할 것인지 결정하는 데 유연성을 확보할 수 있다   1. Factory Method 객체를 생성하기 위해 인터페이스를 정의하지만, 어떤 인스턴스를 생성할지에 대한 결정은 서브클래스에게 위임  구조 활용 생성할 객체">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/8/8e/Factory_Method_UML_class_diagram.svg">
+<meta property="og:updated_time" content="2017-07-25T10:16:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Design Pattern - 생성패턴">
+<meta name="twitter:description" content="생성 패턴이란?인스턴스의 생성/합성 방법을 추상화하여 시스템이 어떤 서브클래스를 사용하지에 대한 정보를 캡슐화 누가, 언제, 무엇을, 어떻게 생성할 것인지 결정하는 데 유연성을 확보할 수 있다   1. Factory Method 객체를 생성하기 위해 인터페이스를 정의하지만, 어떤 인스턴스를 생성할지에 대한 결정은 서브클래스에게 위임  구조 활용 생성할 객체">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/8/8e/Factory_Method_UML_class_diagram.svg">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/">Develop</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/SOLID/">SOLID</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-design-pattern/creational" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Design Pattern - 생성패턴
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/05/09/design-pattern/creational/" class="article-date">
+            <time datetime="2017-05-08T15:00:00.000Z" itemprop="datePublished">2017-05-09</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/creational/">creational</a>, <a class="tag-link" href="/tags/design-pattern/">design pattern</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="생성-패턴이란"><a href="#생성-패턴이란" class="headerlink" title="생성 패턴이란?"></a>생성 패턴이란?</h2><h5 id="인스턴스의-생성-합성-방법을-추상화하여-시스템이-어떤-서브클래스를-사용하지에-대한-정보를-캡슐화"><a href="#인스턴스의-생성-합성-방법을-추상화하여-시스템이-어떤-서브클래스를-사용하지에-대한-정보를-캡슐화" class="headerlink" title="인스턴스의 생성/합성 방법을 추상화하여 시스템이 어떤 서브클래스를 사용하지에 대한 정보를 캡슐화"></a>인스턴스의 생성/합성 방법을 추상화하여 시스템이 어떤 서브클래스를 사용하지에 대한 정보를 캡슐화</h5><blockquote>
+<p><strong>누가</strong>, <strong>언제</strong>, <strong>무엇을</strong>, <strong>어떻게</strong> 생성할 것인지 결정하는 데 유연성을 확보할 수 있다</p>
+</blockquote>
+<hr>
+<h2 id="1-Factory-Method"><a href="#1-Factory-Method" class="headerlink" title="1. Factory Method"></a>1. Factory Method</h2><blockquote>
+<p>객체를 생성하기 위해 인터페이스를 정의하지만, 어떤 인스턴스를 생성할지에 대한 결정은 서브클래스에게 위임</p>
+</blockquote>
+<h5 id="구조"><a href="#구조" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Factory_Method_UML_class_diagram.svg" alt="Factory method"></p>
+<h5 id="활용"><a href="#활용" class="headerlink" title="활용"></a>활용</h5><ul>
+<li>생성할 객체 타입을 예측할 수 없을 때</li>
+<li>생성할 객체를 기술해야하는 책임을 서브클래스에게 위임하고자 할 때</li>
+<li>객체 생성의 책임을 서브클래스(ConcreteProduct)에 위임하고, 서브클래스에 대한 정보를 은닉할 필요가 있을 때</li>
+</ul>
+<h5 id="결과"><a href="#결과" class="headerlink" title="결과"></a>결과</h5><ul>
+<li>컴파일 타임에는 인터페이스/추상클래스에(Product) 의존성을 맺지만, 런타임에는 서브클래스에(ConcreteProduct) 의존성을 갖게되므로 느슨한 결합(loose coupling)을 할 수 있음</li>
+<li>느슨한 결합을 통해, 새로운 서브클래스(ConcreteProduct)를 쉽게 추가할 수 있음</li>
+<li>서브클래스(ConcreteProduct)에 대한 hook 메소드 제공 (객체 생성 전후로 어떤 행위를 추가하기 쉬움)</li>
+<li>병렬적인 클래스 계통을 연결하는 역할을 담당 (자신의 책임을 다른 클래스에 위임하는것)</li>
+</ul>
+<hr>
+<h2 id="2-Abstract-Factory"><a href="#2-Abstract-Factory" class="headerlink" title="2. Abstract Factory"></a>2. Abstract Factory</h2><blockquote>
+<p>독립적인 여러 제품군(AbstractProduct)을 생성할 수 있는 인터페이스(AbstractFactory)를 제공</p>
+</blockquote>
+<h5 id="구조-1"><a href="#구조-1" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Abstract_factory_UML.svg/677px-Abstract_factory_UML.svg.png" alt="Abtract Factory"></p>
+<h5 id="활용-1"><a href="#활용-1" class="headerlink" title="활용"></a>활용</h5><ul>
+<li>서브 클래스의 생성/구성/표현 방식에 의존하지 않는 프로그램 작성할때</li>
+<li>특정 Product 하나를 애플리케이션 설정과 함께 다른 Product으로 대체할 때</li>
+<li>어떤 Product의 제약사항을 외부에서도 따르게 하고자 할때</li>
+<li>Product에 대한 클래스 라이브러리를 제공하고, 구현이 아닌 인터페이스만 노출하고자 할 때</li>
+</ul>
+<h5 id="결과-1"><a href="#결과-1" class="headerlink" title="결과"></a>결과</h5><ul>
+<li>Product의 생성/구성/표현 방식에 대한 전반적인 과정을 캡슐화하여 서브 클래스에 위임했기 때문에, 구체적인 클래스를 분리되어 있음</li>
+<li>애플리케이션내에 팩토리의 서브클래스(ConcreteFactory)를 변경하기 쉬기 때문에, 제품군(AbstracProduct)을 쉽게 대체 가능</li>
+<li>오직 팩토리의 서브클래스(ConcreteFactory)에서만 객체를 생성함으로, 애플리케이션내에 Product 객체들의 일관성을 높일 수 있음</li>
+<li>새로운 Product를 제공하기 어려움 (AbstractFactory가 영향받으면 하위 모든 서브클래스가 영향을 받게됨)</li>
+</ul>
+<hr>
+<h2 id="3-Prototype"><a href="#3-Prototype" class="headerlink" title="3. Prototype"></a>3. Prototype</h2><blockquote>
+<p>인스턴스를 복사해서 새로운 인스턴스를 만드는 것</p>
+</blockquote>
+<h5 id="구조-2"><a href="#구조-2" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Prototype_UML.svg/600px-Prototype_UML.svg.png" alt="Prototype"></p>
+<h5 id="활용-2"><a href="#활용-2" class="headerlink" title="활용"></a>활용</h5><ul>
+<li>인스턴스화 할 클래스를 런타임에 지정하고 싶을 때</li>
+<li>팩토리에서와 같이 Product와 Factory를 병렬적으로 만들고 싶지 않을 때</li>
+<li>클래스의 인스턴스가 구성/표현 방식이 복잡할 때</li>
+<li>프레임워크와 인스턴스를 분리하고 싶을 때</li>
+<li>Composite, Decorator 패턴이 많이 사용될 때</li>
+</ul>
+<h5 id="결과-2"><a href="#결과-2" class="headerlink" title="결과"></a>결과</h5><ul>
+<li>런타임에 새로운 Product를 추가/삭제 할 수 있음</li>
+<li>새로운 클래스의 생성 없이 객체에 정의된 필드에 따라 행위를 변경 가능</li>
+<li>구조를 다양화 하여 새로운 객체 정의 가능</li>
+<li>서브클래스의 수를 줄일 수 있음</li>
+<li>동적으로 클래스에 따라 애플리케이션 구성 가능</li>
+</ul>
+<hr>
+<h2 id="4-Singleton"><a href="#4-Singleton" class="headerlink" title="4. Singleton"></a>4. Singleton</h2><blockquote>
+<p>오직 한개의 클래스 인스턴스만 갖도록 보장하고, 전역적인 접근을 제공</p>
+</blockquote>
+<h5 id="구조-3"><a href="#구조-3" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Singleton_UML_class_diagram.svg/1200px-Singleton_UML_class_diagram.svg.png" alt="Singleton"></p>
+<h5 id="활용-3"><a href="#활용-3" class="headerlink" title="활용"></a>활용</h5><ul>
+<li>클래스의 인스턴스가 오직 하나이면서, 전역적인 접근이 필요 할 때</li>
+<li>유일한 인스턴스가 서브클래싱으로 확장되어야 하며, 사용자는 코드의 수정 없이 확장된 서브클래스의 인스턴스를 사용할 수 있어야 할 때</li>
+</ul>
+<h5 id="결과-3"><a href="#결과-3" class="headerlink" title="결과"></a>결과</h5><ul>
+<li>유일하게 존재하는 인스턴스로 전역적 접근 통제</li>
+<li>namespace의 제한</li>
+<li>연산 및 표현의 정제 허용</li>
+<li>인스턴스의 개수를 변경하기가 자유로움</li>
+<li>클래스 연산을 사용하는 것보다 훨씬 유연</li>
+<li>클래스로더가 여러개 있다면, 클래스 로더를 직접 지정해서 사용할 것(여러개의 인스턴스 생성 가능)</li>
+<li><p>고전적인 방식의 lazy instantiation 생성시 멀티스레드 상황에서 문제가 생길 수 있으니 주의할것</p>
+<ul>
+<li>해결법은 다음과 같다.</li>
+</ul>
+<ol>
+<li>속도의 문제가 없다면 synchronized 사용</li>
+<li><p>DCL(Double-checking locking)을 사용하여 getInstance()의 동기화 부분을 줄임</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Singleton instance;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</div><div class="line">    <span class="keyword">synchronized</span> (Singleton.class)&#123;</div><div class="line">      <span class="keyword">if</span>(instance == <span class="keyword">null</span>)</div><div class="line">        instance = <span class="keyword">new</span> Singleton();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>인스턴스를 처음부터 생성 (<em>권장사항</em>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</div></pre></td></tr></table></figure>
+</li>
+<li><p>특별한 문제가 없다면</p>
+</li>
+</ol>
+</li>
+<li>Singleton으로 만들어진 객체는 반드시 추가적인 인스턴스 생성을 못하게 막아야 함</li>
+</ul>
+<hr>
+<h2 id="5-Builder"><a href="#5-Builder" class="headerlink" title="5. Builder"></a>5. Builder</h2><blockquote>
+<p>복잡한 객체를 생성 및 표현방법을 분리하여, 서로 다른 표현이라도 객체를 생성할 수 있는 동일한 방식을 제공</p>
+</blockquote>
+<h5 id="구조-4"><a href="#구조-4" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Builder_UML_class_diagram.svg/1200px-Builder_UML_class_diagram.svg.png" alt="Builder"></p>
+<h5 id="활용-4"><a href="#활용-4" class="headerlink" title="활용"></a>활용</h5><ul>
+<li>복합객체 생성 방법이, 각 요소들의 조합 방법에 독립적일 때</li>
+<li>합성할 객체들의 표현방법이 다르더라도, 생성과정에서 이를 지원해야 할 때</li>
+</ul>
+<h5 id="결과-4"><a href="#결과-4" class="headerlink" title="결과"></a>결과</h5><ul>
+<li>객체 내부 표현을 다양하게 변화 가능</li>
+<li>생성과 표현의 코드를 분리</li>
+<li>복합 객체 생성 절차를 세밀하게 분류 가능</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://choduk.github.io/2017/05/09/design-pattern/creational/" data-id="cj5jf3hgh0015bdj1gtkwf3aw" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/14/design-pattern/structural/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            Design Pattern - 구조패턴
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/05/07/blog/hello-jekyll/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">Github + Jekyll로 빠르게 블로그 만들기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/16/solid/solid-dip/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png)" alt="SOLID - 의존관계 역전 원칙 (DIP)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/16/solid/solid-dip/" class="title">SOLID - 의존관계 역전 원칙 (DIP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-15T15:00:00.000Z" itemprop="datePublished">2017-06-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/05/solid/solid-isp/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/05/solid/solid-isp/" class="title">SOLID - 인터페이스 분리 원칙 (ISP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/04/solid/solid-lsp/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/04/solid/solid-lsp/" class="title">SOLID - 리스코프 치환 원칙 (LSP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-03T15:00:00.000Z" itemprop="datePublished">2017-06-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/03/solid/solid-ocp/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/03/solid/solid-ocp/" class="title">SOLID - 개방 폐쇄 원칙 (OCP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-02T15:00:00.000Z" itemprop="datePublished">2017-06-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/29/solid/solid-srp/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/05/29/solid/solid-srp/" class="title">SOLID - 단일 책임 원칙 (SRP)</a></p>
+                            <p class="item-date"><time datetime="2017-05-28T15:00:00.000Z" itemprop="datePublished">2017-05-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/SOLID/">SOLID</a><span class="category-list-count">5</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SOLID/">SOLID</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/behaviroal/">behaviroal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/creational/">creational</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/structural/">structural</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/SOLID/" style="font-size: 20px;">SOLID</a> <a href="/tags/behaviroal/" style="font-size: 13.33px;">behaviroal</a> <a href="/tags/creational/" style="font-size: 10px;">creational</a> <a href="/tags/design-pattern/" style="font-size: 16.67px;">design pattern</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/structural/" style="font-size: 10px;">structural</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Duk</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'choduk';
+    
+    
+    var disqus_url = 'http://choduk.github.io/2017/05/09/design-pattern/creational/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
