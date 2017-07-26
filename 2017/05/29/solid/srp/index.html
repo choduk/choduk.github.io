@@ -3,25 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Design Pattern - 행동패턴 (1) | Hexo</title>
+    <title>SOLID - 단일 책임 원칙 (SRP) | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="design pattern,behaviroal" />
+        <meta name="keywords" content="SOLID" />
     
-    <meta name="description" content="행동 패턴이란?책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴 객체간의 교류방법에 대해 정의하여 런타임에 수행하기 어려운 복잡한 제어 구조를 패턴화 한 것   1. Chain of Responsibility 메시지를 보내고 처리하는 객체들 간의 커플링를 없애기 위한 패턴, 각 핸들러는 자신이 처리할 수 있으면 처리하고, 처리할 수 없으면 다">
-<meta name="keywords" content="design pattern,behaviroal">
+    <meta name="description" content="Single responsibility principle 클래스는 하나의 책임만 가지며 클래스는 그 책임을 완전히 캡슐화 해야 한다.  여러 책임을 갖고 있는 DataViewer 클래스1234567891011121314151617181920212223// 개발자가 반드시 정복해야 할 객체 지향과 디자인패턴(106page 예제)class DataViewer">
+<meta name="keywords" content="SOLID">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Design Pattern - 행동패턴 (1)">
-<meta property="og:url" content="http://choduk.github.io/2017/05/15/design-pattern/behavioral-1/index.html">
+<meta property="og:title" content="SOLID - 단일 책임 원칙 (SRP)">
+<meta property="og:url" content="http://choduk.github.io/2017/05/29/solid/srp/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="행동 패턴이란?책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴 객체간의 교류방법에 대해 정의하여 런타임에 수행하기 어려운 복잡한 제어 구조를 패턴화 한 것   1. Chain of Responsibility 메시지를 보내고 처리하는 객체들 간의 커플링를 없애기 위한 패턴, 각 핸들러는 자신이 처리할 수 있으면 처리하고, 처리할 수 없으면 다">
+<meta property="og:description" content="Single responsibility principle 클래스는 하나의 책임만 가지며 클래스는 그 책임을 완전히 캡슐화 해야 한다.  여러 책임을 갖고 있는 DataViewer 클래스1234567891011121314151617181920212223// 개발자가 반드시 정복해야 할 객체 지향과 디자인패턴(106page 예제)class DataViewer">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://fox.wikis.com/graphics/chain094.gif">
-<meta property="og:updated_time" content="2017-07-25T10:15:54.000Z">
+<meta property="og:updated_time" content="2017-07-25T10:16:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Design Pattern - 행동패턴 (1)">
-<meta name="twitter:description" content="행동 패턴이란?책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴 객체간의 교류방법에 대해 정의하여 런타임에 수행하기 어려운 복잡한 제어 구조를 패턴화 한 것   1. Chain of Responsibility 메시지를 보내고 처리하는 객체들 간의 커플링를 없애기 위한 패턴, 각 핸들러는 자신이 처리할 수 있으면 처리하고, 처리할 수 없으면 다">
-<meta name="twitter:image" content="http://fox.wikis.com/graphics/chain094.gif">
+<meta name="twitter:title" content="SOLID - 단일 책임 원칙 (SRP)">
+<meta name="twitter:description" content="Single responsibility principle 클래스는 하나의 책임만 가지며 클래스는 그 책임을 완전히 캡슐화 해야 한다.  여러 책임을 갖고 있는 DataViewer 클래스1234567891011121314151617181920212223// 개발자가 반드시 정복해야 할 객체 지향과 디자인패턴(106page 예제)class DataViewer">
     
 
     
@@ -130,18 +128,18 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
+    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/SOLID/">SOLID</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-design-pattern/behavioral-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-solid/srp" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Design Pattern - 행동패턴 (1)
+        SOLID - 단일 책임 원칙 (SRP)
         </h1>
     
 
@@ -151,138 +149,54 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/05/15/design-pattern/behavioral-1/" class="article-date">
-            <time datetime="2017-05-14T15:00:00.000Z" itemprop="datePublished">2017-05-15</time>
+        <a href="/2017/05/29/solid/srp/" class="article-date">
+            <time datetime="2017-05-28T15:00:00.000Z" itemprop="datePublished">2017-05-29</time>
         </a>
     </div>
 
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/behaviroal/">behaviroal</a>, <a class="tag-link" href="/tags/design-pattern/">design pattern</a>
+        <a class="tag-link" href="/tags/SOLID/">SOLID</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="행동-패턴이란"><a href="#행동-패턴이란" class="headerlink" title="행동 패턴이란?"></a>행동 패턴이란?</h2><h5 id="책임-및-알고리즘을-어떤-객체에-할당하는-것이-좋은지-다룬-패턴"><a href="#책임-및-알고리즘을-어떤-객체에-할당하는-것이-좋은지-다룬-패턴" class="headerlink" title="책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴"></a>책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴</h5><blockquote>
-<p>객체간의 교류방법에 대해 정의하여 런타임에 수행하기 어려운 복잡한 제어 구조를 패턴화 한 것</p>
+            <h2 id="Single-responsibility-principle"><a href="#Single-responsibility-principle" class="headerlink" title="Single responsibility principle"></a>Single responsibility principle</h2><blockquote>
+<p>클래스는 하나의 책임만 가지며 클래스는 그 책임을 완전히 캡슐화 해야 한다.</p>
 </blockquote>
+<h5 id="여러-책임을-갖고-있는-DataViewer-클래스"><a href="#여러-책임을-갖고-있는-DataViewer-클래스" class="headerlink" title="여러 책임을 갖고 있는 DataViewer 클래스"></a>여러 책임을 갖고 있는 DataViewer 클래스</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 개발자가 반드시 정복해야 할 객체 지향과 디자인패턴(106page 예제)</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataViewer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</div><div class="line">        String data = loadHtml();</div><div class="line">        updateGui(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">loadHtml</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpClient client = <span class="keyword">new</span> HttpClient();</div><div class="line">        client.connect(url);</div><div class="line">        <span class="keyword">return</span> client.getResponse();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateGui</span><span class="params">(String data)</span> </span>&#123;</div><div class="line">        GuiData guiModel = parseDataToGuiData(data);</div><div class="line">        tableUI.changeData(guiModel);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> GuiData <span class="title">parseDataToGuiData</span><span class="params">(String data)</span> </span>&#123;</div><div class="line">        <span class="comment">// 파싱 처리 코드</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="위-코드의-문제점"><a href="#위-코드의-문제점" class="headerlink" title="위 코드의 문제점"></a>위 코드의 문제점</h3><ul>
+<li>하나의 책임이 다른 책임까지 영향을 준다 (<code>data</code>를 가져오는 방식이 <code>HTTP</code>방식에서 다른 방식으로 변경된다면, 관련된 모든 코드가 수정되어야 한다.)</li>
+<li><code>data</code>를 가져오는 새로운 방식이 추가됐다면, 사용하지 않더라도 불필요한 <code>package</code>를 포함되어야 한다.</li>
+</ul>
+<h3 id="개선방안"><a href="#개선방안" class="headerlink" title="개선방안"></a>개선방안</h3><ol>
+<li><code>DataLoader</code>, <code>DataDisplayer</code> 두가지 책임을 분리한다.</li>
+<li>둘 간에 주고 받을 데이터를 <code>String</code>이 아닌 추상화된 타입으로 변경한다.</li>
+</ol>
+<h4 id="개선된-코드-1"><a href="#개선된-코드-1" class="headerlink" title="개선된 코드 1"></a>개선된 코드 1</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Data</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataLoader</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> Data <span class="title">load</span><span class="params">()</span> </span>&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataDisplayer</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(Data data)</span> </span>&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataViewer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> DataLoader loader = <span class="keyword">new</span> DataLoader();</div><div class="line">    <span class="keyword">private</span> DataDisplayer displayer = <span class="keyword">new</span> DataDisplayer();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</div><div class="line">        Data data = loader.load();</div><div class="line">        displayer.display(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">loadData</span><span class="params">()</span> </span>&#123;</div><div class="line">        Data data = loader.load();</div><div class="line">        <span class="keyword">return</span> dataToString(data);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="남아있는-문제점"><a href="#남아있는-문제점" class="headerlink" title="남아있는 문제점"></a>남아있는 문제점</h3><ul>
+<li><code>DataViewer</code>가  <code>DataLoader</code>, <code>DataDisplayer</code> 두 클래스와 <code>Composition</code>을 관계를 형성하므로, 강한 <code>coupling</code>이 존재한다.</li>
+<li><code>DataLoader</code>, <code>DataDisplayer</code> 두 클래스가 변경되면, <code>DataViewer</code> 클래스가 영향을 받는다.</li>
+</ul>
+<h3 id="개선방안-1"><a href="#개선방안-1" class="headerlink" title="개선방안"></a>개선방안</h3><ul>
+<li><code>DataLoader</code>, <code>DataDisplayer</code>를 <code>interface</code>로 변경하여 의존성을 역전시킨다.</li>
+</ul>
+<h5 id="개선된-코드-2"><a href="#개선된-코드-2" class="headerlink" title="개선된 코드 2"></a>개선된 코드 2</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Data</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DataLoader</span> </span>&#123;</div><div class="line">    <span class="function">Data <span class="title">load</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">DataDisplayer</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(Data data)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataViewer</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DataLoader loader;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DataDisplayer displayer;</div><div class="line"></div><div class="line">    <span class="comment">// 외부에서 의존성 주입</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DataViewer</span><span class="params">(DataLoader loader, DataDisplayer displayer)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.loader = loader;</div><div class="line">        <span class="keyword">this</span>.displayer = displayer;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</div><div class="line">        Data data = loader.load();</div><div class="line">        displayer.display(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">loadData</span><span class="params">()</span> </span>&#123;</div><div class="line">        Data data = loader.load();</div><div class="line">        <span class="keyword">return</span> dataToString(data);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="1-Chain-of-Responsibility"><a href="#1-Chain-of-Responsibility" class="headerlink" title="1. Chain of Responsibility"></a>1. Chain of Responsibility</h2><blockquote>
-<p>메시지를 보내고 처리하는 객체들 간의 <code>커플링</code>를 없애기 위한 패턴, 각 핸들러는 자신이 처리할 수 있으면 처리하고, 처리할 수 없으면 다음 핸들러에게 요청을 넘긴다.</p>
+<h3 id="책임을-나누는-방법"><a href="#책임을-나누는-방법" class="headerlink" title="책임을 나누는 방법"></a>책임을 나누는 방법</h3><ol>
+<li>많은 프로그래밍 경험을 바탕으로 감각적으로…(-_-;;)</li>
+<li>매서드를 실행하는 주체(<code>Actor</code>)를 확인해 본다</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GUIApplication</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataProcessor</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataViewer</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">loadData</span><span class="params">()</span> </span>&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>위와 같은 상황이라면, <code>GUIApplication</code> 클래스는 <code>DataViewer.display()</code> 매서드를, <code>DataProcessor</code>클래스는 <code>DataViewer.loadData()</code> 매서드가 필요하므로, 두 매서드는 각각 다른 책임이므로 분리해야할 가능성이 높다.</p>
 </blockquote>
-<h5 id="구조"><a href="#구조" class="headerlink" title="구조"></a>구조</h5><p><img src="http://fox.wikis.com/graphics/chain094.gif" alt="Chain of Responsibility">{: .center-image}</p>
-<h5 id="활용"><a href="#활용" class="headerlink" title="활용"></a>활용</h5><ul>
-<li>하나 이상의 객체가 요청을 처리해야하며 핸들러의 우선순위가 없으며, 각 객체가 자동으로 선택 되어야 할 때</li>
-<li>리시버를 명시하지 않은 채 특정 객체에게 요청하고 싶을 때</li>
-<li>요청을 처리할 수 있는 객체집합이 동적으로 정의되어야 할 때</li>
-</ul>
-<h5 id="결과"><a href="#결과" class="headerlink" title="결과"></a>결과</h5><ul>
-<li>객체 간의 <code>결합도(coupling)</code>가 줄어듬 (다른 객체가 요청을 어떻게 처리하는지, 연결구조가 어떻게 된지 몰라도 된다)</li>
-<li>책임을 할당하는데 유연성을 높일 수 있음 (책임을 여러 객체에게 분산 시킬 수 있으며, 런타임에 추가/변경/확장 이 가능함)</li>
-<li>어떤 객체가 처리할지 명시하지 않으므로, 메시지 처리에 대한 보장이 되질 않음</li>
-</ul>
-<h5 id="잘-알려진-사용-예"><a href="#잘-알려진-사용-예" class="headerlink" title="잘 알려진 사용 예"></a>잘 알려진 사용 예</h5><ul>
-<li>클래스 라이브러리에서 이벤트 처리 (EventHandler)</li>
-<li>Logger</li>
-</ul>
-<hr>
-<h2 id="2-Command"><a href="#2-Command" class="headerlink" title="2. Command"></a>2. Command</h2><blockquote>
-<p>하나의 요청을 하나의 객체로 캡슐화하여 파라미터처럼 사용할 수 있도록하며 요청을 되돌릴 수 있는 기능을 지원</p>
-</blockquote>
-<h5 id="구조-1"><a href="#구조-1" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Command_design_pattern.png" alt="Command">{: .center-image}</p>
-<h5 id="활용-1"><a href="#활용-1" class="headerlink" title="활용"></a>활용</h5><ul>
-<li>수행할 행위를 파라미터로 만들고자 할 때 (절차지향 프로그래밍의 <code>Callback()</code> 과 동일)</li>
-<li><code>Command</code>객체는 요청과 다른 <code>생명주기</code>를 가지므로 서로 다른 시간에 요청을</li>
-</ul>
-<h5 id="결과-1"><a href="#결과-1" class="headerlink" title="결과"></a>결과</h5><ul>
-<li>호출객체와 구현객체를 분리</li>
-<li><code>Command</code>는 <a href="https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B8%89_%EA%B0%9D%EC%B2%B4" target="_blank" rel="external">일급객체</a> 이므로 다른 객체와 같은 방식으로 조작되고 확장할 수 있음</li>
-<li>여러 <code>Command</code>를 조합해서 다른 <code>Command</code>를 만들 수 있음 (<code>Composite</code>패턴을 이용하여 여러 명령어 구성 가능)</li>
-<li>새로운 <code>Command</code>를 추가하기 쉬움</li>
-</ul>
-<h5 id="잘-알려진-사용-예-1"><a href="#잘-알려진-사용-예-1" class="headerlink" title="잘 알려진 사용 예"></a>잘 알려진 사용 예</h5><ul>
-<li>GUI에서의 메뉴에서 사용자가 MenuItem을 선택하면 <code>Command</code>에 등록된 <code>Execute()</code>연산을 호출함</li>
-</ul>
-<hr>
-<h2 id="3-Interpreter"><a href="#3-Interpreter" class="headerlink" title="3. Interpreter"></a>3. Interpreter</h2><blockquote>
-<p>어떤 언어에 대해, 문법에 대한 표현을 정의하면서 표현을 사용하여 해당 언어로 기술된 문장을 해석하는 해석자를 함께 정의</p>
-</blockquote>
-<h5 id="구조-2"><a href="#구조-2" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/en/0/03/Interpreter_UML_class_diagram.jpg" alt="Interpreter">{: .center-image}</p>
-<h5 id="활용-2"><a href="#활용-2" class="headerlink" title="활용"></a>활용</h5><ul>
-<li>정의할 언어의 문법이 간단함</li>
-<li>효율성은 고려사항이 아님<ul>
-<li>가장 효율저인 <code>interpreter</code>를 구현하는 방법은 파스 트리를 직접 처리하는 것이 아니라, 일차적으로 파스트리를 다른 형태로 <code>번역(translate)</code> 시키는것</li>
-<li>예를들어, 정규표현식은 일반적으로 유한상태기계(fninite state machine)으로 변역함</li>
-</ul>
-</li>
-</ul>
-<h5 id="결과-2"><a href="#결과-2" class="headerlink" title="결과"></a>결과</h5><ul>
-<li>문법을 확장하거나 바꾸기 쉽움</li>
-<li>문법의 구현이 쉽움</li>
-<li>복잡한 문법은 관리하기 어려움</li>
-<li>새로운 표현식의 해석방법을 추가할 수 있음</li>
-</ul>
-<h5 id="잘-알려진-사용-예-2"><a href="#잘-알려진-사용-예-2" class="headerlink" title="잘 알려진 사용 예"></a>잘 알려진 사용 예</h5><ul>
-<li>객체지향 컴파일러</li>
-<li><code>Composite</code>패턴이 사용되는 곳에 <code>Interpreter</code>패턴을 사용할 수 있음, (단 <code>Composite</code> 패턴으로 정의한 클래스들이 하나의 언어 구조를 정의할 때만 <code>Interpreter</code>라고 불림)</li>
-</ul>
-<hr>
-<h2 id="4-Iterator"><a href="#4-Iterator" class="headerlink" title="4. Iterator"></a>4. Iterator</h2><blockquote>
-<p>내부구조를 노출하지 않고, 집합 객체(aggregate object)에 속한 원소들을 순차적으로 접근할 수 있는 방법을 제공</p>
-</blockquote>
-<h5 id="구조-3"><a href="#구조-3" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Iterator_design_pattern.png" alt="Iterator">{: .center-image}</p>
-<h5 id="활용-3"><a href="#활용-3" class="headerlink" title="활용"></a>활용</h5><ul>
-<li>객체 내부 표현 방식을 모르고, 집합 객체의 각 원소들에 접근하고 싶을 때</li>
-<li>집합 객체를 순회하는 다양한 방법을 지원하고 싶을 때</li>
-<li>다른 집합 객체 구조에 대해서도 동일한 인터페이스를 제공하고자 할 때</li>
-</ul>
-<h5 id="결과-3"><a href="#결과-3" class="headerlink" title="결과"></a>결과</h5><ul>
-<li>집합 객체의 다양한 순회방법을 제공</li>
-<li><code>Iterator</code>는 <code>Aggregate</code>클래스의 인터페이스를 단순하게 만듬</li>
-<li>집합 객체에 따라 여러 순회 방법을 제공</li>
-</ul>
-<h5 id="잘-알려진-사용-예-3"><a href="#잘-알려진-사용-예-3" class="headerlink" title="잘 알려진 사용 예"></a>잘 알려진 사용 예</h5><ul>
-<li>컬렉션 클래스</li>
-</ul>
-<hr>
-<h2 id="5-Mediator"><a href="#5-Mediator" class="headerlink" title="5. Mediator"></a>5. Mediator</h2><blockquote>
-<p>객체들간의 상호작용을 캡슐화하여 하나의 객체에 정의 (참조 관계를 직접 정의하기보다는 독립된 다른객체가 관리)</p>
-</blockquote>
-<h5 id="구조-4"><a href="#구조-4" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Mediator_design_pattern.png" alt="Mediator">{: .center-image}</p>
-<h5 id="활용-4"><a href="#활용-4" class="headerlink" title="활용"></a>활용</h5><ul>
-<li>여러 객체가 복잡한 상호작용을 가질 때 (객체간 의존성이 구조화 되어 있지 않고, 이해하기 어려울 때)</li>
-<li>한 객체가 다른 객체를 너무 많이 참조하고 너무 많은 일을 수행하여 재사용하기 어려울 때</li>
-<li>여러 클래스에 분산된 행동들이 상속없이 수정되어야 할 때</li>
-</ul>
-<h5 id="결과-4"><a href="#결과-4" class="headerlink" title="결과"></a>결과</h5><ul>
-<li>서브클래싱 제한함</li>
-<li><code>Colleague</code>객체 사이의 종속성 줄임</li>
-<li>객체 프로토콜을 단순하게 만듬</li>
-<li>객체 간의 협력 방법을 추상화함</li>
-<li>통제의 집중화 (<code>Mediator</code> 클래스 자체의 유지보수가 어려워질 수 있음)</li>
-</ul>
-<h5 id="잘-알려진-사용-예-4"><a href="#잘-알려진-사용-예-4" class="headerlink" title="잘 알려진 사용 예"></a>잘 알려진 사용 예</h5><ul>
-<li>Windows 플랫폼용 스몰토크/V의 응용프로그램에서 <code>pane</code> 클래스 계통의 객체들이 많이 제공되는데 (<code>TextPane</code>, <code>ListBox</code>, <code>Button</code> 등), 이들은 별다른 상속없이도 ViewManager 클래스만 상속받으면 된다.</li>
-<li><img src="http://nekenciu.tv/oot/files/DP/hires/Pictures/media032.gif" alt="사진">{: .center-image}{: .center-image}</li>
-</ul>
-<h4 id="스몰토크-V-에서의-Mediator"><a href="#스몰토크-V-에서의-Mediator" class="headerlink" title="스몰토크/V 에서의 Mediator"></a><a href="https://sourcemaking.com/design_patterns/mediator" target="_blank" rel="external">스몰토크/V 에서의 Mediator</a></h4><hr>
-<h2 id="6-Memento"><a href="#6-Memento" class="headerlink" title="6. Memento"></a>6. Memento</h2><blockquote>
-<p>캡슐화를 위배하지 않을 채 어객체의 내부 상태를 캡처해두고, 이후 그 상태로 되돌아올 수 있도록 함</p>
-</blockquote>
-<h5 id="구조-5"><a href="#구조-5" class="headerlink" title="구조"></a>구조</h5><p><img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Memento_design_pattern.png" alt="Memento">{: .center-image}</p>
-<h5 id="활용-5"><a href="#활용-5" class="headerlink" title="활용"></a>활용</h5><ul>
-<li>객체 상태에 대한 스냅샷을 저장한 후 상태를 되돌릴 때</li>
-<li>상태를 얻기위한 인터페이스를 두면 객체의 세부 구현이 드러나서 캡슐화가 위배될 때</li>
-</ul>
-<h5 id="결과-5"><a href="#결과-5" class="headerlink" title="결과"></a>결과</h5><ul>
-<li>캡슐화된 경계를 유지할 수 있음</li>
-<li><code>Originator</code> 클래스가 단순해짐</li>
-<li><code>Memento</code>의 사용으로 더 많은 비용이 발생할 수 있음</li>
-<li>제한적 / 광범위한 인터페이스를 정의해야함 (어떤 언어에서는 <code>Originator</code> 객체에서만 <code>Memento</code>의 상태 접근을 보장하기 어려울 수 있음)</li>
-<li><code>Caretaker</code>는 자신이 보관한 <code>Memento</code>를 삭제할 책임이 있음으로, <code>Memento</code>를 관리하는데 추가적인 비용이 들어갈 수 있음</li>
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
+<li><a href="http://www.yes24.com/24/goods/9179120?scode=029" target="_blank" rel="external">개발자가 반드시 정복해야 할 객체 지향과 디자인 패턴</a></li>
+<li><a href="https://www.youtube.com/watch?v=AdANHDp5dTM&amp;t=1314s" target="_blank" rel="external">클린코더스 강의(13강 SRP)</a></li>
 </ul>
 
         </div>
@@ -291,7 +205,7 @@
 
 
 
-    <a data-url="http://choduk.github.io/2017/05/15/design-pattern/behavioral-1/" data-id="cj5kisbfl0005wsj1m8l6w05p" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://choduk.github.io/2017/05/29/solid/srp/" data-id="cj5kisbfv000gwsj1qr6dez17" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -396,20 +310,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/05/19/design-pattern/behavioral-2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/06/03/solid/ocp/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            Design Pattern - 행동패턴 (2)
+            SOLID - 개방 폐쇄 원칙 (OCP)
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/05/14/design-pattern/structural/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/05/19/design-pattern/behavioral-2/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Design Pattern - 구조패턴</p>
+        <p class="article-nav-title">Design Pattern - 행동패턴 (2)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -612,7 +526,7 @@
     var disqus_shortname = 'choduk';
     
     
-    var disqus_url = 'http://choduk.github.io/2017/05/15/design-pattern/behavioral-1/';
+    var disqus_url = 'http://choduk.github.io/2017/05/29/solid/srp/';
     
     (function() {
     var dsq = document.createElement('script');

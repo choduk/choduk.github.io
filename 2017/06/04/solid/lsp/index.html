@@ -3,23 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>SOLID - 인터페이스 분리 원칙 (ISP) | Hexo</title>
+    <title>SOLID - 리스코프 치환 원칙 (LSP) | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="SOLID" />
     
-    <meta name="description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+    <meta name="description" content="Liskov substitution principle 상위타입 객체를 사용하는 프로그램은 상위타입 대신 하위타입 객체를 사용해도 클라이언트의 수정 없이 정상적으로 동작해야 한다.  LSP 위반 사례 명세에 벗어난 값 리턴 명세에 벗어난 익셉션 발생 명세에 벗어난 기능 수행 instanceof / downcasting을 사용한것은 전형적인 LSP 위반  LS">
 <meta name="keywords" content="SOLID">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta property="og:url" content="http://choduk.github.io/2017/06/05/solid/solid-isp/index.html">
+<meta property="og:title" content="SOLID - 리스코프 치환 원칙 (LSP)">
+<meta property="og:url" content="http://choduk.github.io/2017/06/04/solid/lsp/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta property="og:description" content="Liskov substitution principle 상위타입 객체를 사용하는 프로그램은 상위타입 대신 하위타입 객체를 사용해도 클라이언트의 수정 없이 정상적으로 동작해야 한다.  LSP 위반 사례 명세에 벗어난 값 리턴 명세에 벗어난 익셉션 발생 명세에 벗어난 기능 수행 instanceof / downcasting을 사용한것은 전형적인 LSP 위반  LS">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2017-07-25T10:16:18.000Z">
+<meta property="og:updated_time" content="2017-07-25T10:16:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta name="twitter:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta name="twitter:title" content="SOLID - 리스코프 치환 원칙 (LSP)">
+<meta name="twitter:description" content="Liskov substitution principle 상위타입 객체를 사용하는 프로그램은 상위타입 대신 하위타입 객체를 사용해도 클라이언트의 수정 없이 정상적으로 동작해야 한다.  LSP 위반 사례 명세에 벗어난 값 리턴 명세에 벗어난 익셉션 발생 명세에 벗어난 기능 수행 instanceof / downcasting을 사용한것은 전형적인 LSP 위반  LS">
     
 
     
@@ -69,7 +69,7 @@
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/">Develop</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/SOLID/">SOLID</a></li></ul></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/">Develop</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/SOLID/">SOLID</a></li></ul></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
@@ -132,14 +132,14 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-solid/solid-isp" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-solid/lsp" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        SOLID - 인터페이스 분리 원칙 (ISP)
+        SOLID - 리스코프 치환 원칙 (LSP)
         </h1>
     
 
@@ -149,8 +149,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/05/solid/solid-isp/" class="article-date">
-            <time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time>
+        <a href="/2017/06/04/solid/lsp/" class="article-date">
+            <time datetime="2017-06-03T15:00:00.000Z" itemprop="datePublished">2017-06-04</time>
         </a>
     </div>
 
@@ -164,18 +164,28 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="Interface-segregation-principle"><a href="#Interface-segregation-principle" class="headerlink" title="Interface segregation principle"></a>Interface segregation principle</h2><blockquote>
-<p>클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.</p>
-<ul>
-<li>사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능</li>
-<li>사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화</li>
-<li>클라이언트 입장에서 인터페이스를 분리</li>
-</ul>
+            <h2 id="Liskov-substitution-principle"><a href="#Liskov-substitution-principle" class="headerlink" title="Liskov substitution principle"></a>Liskov substitution principle</h2><blockquote>
+<p>상위타입 객체를 사용하는 프로그램은 상위타입 대신 하위타입 객체를 사용해도 클라이언트의 수정 없이 정상적으로 동작해야 한다.</p>
 </blockquote>
-<h4 id="흔하디-흔한-스타크래프트-예제"><a href="#흔하디-흔한-스타크래프트-예제" class="headerlink" title="흔하디 흔한 스타크래프트 예제"></a>흔하디 흔한 스타크래프트 예제</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 메딕은 공격이 없는데??</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="개선된-코드"><a href="#개선된-코드" class="headerlink" title="개선된 코드"></a>개선된 코드</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span>, <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="comment">// ... 동일하므로 생략</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// attack()에 대해 의존하지 않음</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="LSP-위반-사례"><a href="#LSP-위반-사례" class="headerlink" title="LSP 위반 사례"></a>LSP 위반 사례</h4><ul>
+<li>명세에 벗어난 값 리턴</li>
+<li>명세에 벗어난 익셉션 발생</li>
+<li>명세에 벗어난 기능 수행</li>
+<li>instanceof / downcasting을 사용한것은 전형적인 LSP 위반</li>
+</ul>
+<h5 id="LSP의-대표적인-예-직사각형-정사각형-문제"><a href="#LSP의-대표적인-예-직사각형-정사각형-문제" class="headerlink" title="LSP의 대표적인 예(직사각형-정사각형 문제)"></a>LSP의 대표적인 예(직사각형-정사각형 문제)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> width;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> height;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWidth</span><span class="params">(<span class="keyword">int</span> width)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.width = width;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">int</span> height)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.height = height;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWidth</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> width;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getHeight</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 직사각형을 상속받아 정사각형을 만들었을때</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Rectangle</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWidth</span><span class="params">(<span class="keyword">int</span> width)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.setWidth(widht);</div><div class="line">    <span class="keyword">super</span>.setHeight(widht);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">int</span> height)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.setWidth(height);</div><div class="line">    <span class="keyword">super</span>.setHeight(height);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="위-코드의-문제점"><a href="#위-코드의-문제점" class="headerlink" title="위 코드의 문제점"></a>위 코드의 문제점</h3><ul>
+<li><p>LSP를 위반하는 부분</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">increaseHeight</span><span class="params">(Rectangle rec)</span> </span>&#123;</div><div class="line">   <span class="keyword">if</span>(rec.getHeight() &lt;= rec.getWidth()) &#123;</div><div class="line">     rec.setHeight(rec.getWidth() + <span class="number">10</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>위와같은 코드를 작성하고 파라미터로 <code>Square</code>를 넘겼을때 <code>width</code>, <code>height</code>가 모두 증가하게 된다. 즉, <code>height</code>만 증가 시킬 수 없다</p>
+</li>
+<li>떄문에, <code>if(rec instance of Square)</code> 와 같은 코드를 넣어서 막아야 한다</li>
+<li>이는 상위타입이 하위타입을 대체하지 못해서 코드의 수정이 이뤄졌으므로, LSP를 위반한다.</li>
+</ul>
 <h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
-<li><a href="https://www.youtube.com/watch?v=IIrjI7YUw6g&amp;list=PLagTY0ogyVkIl2kTr08w-4MLGYWJz7lNK&amp;index=17" target="_blank" rel="external">클린코더스 강의(14.3강 ISP)</a></li>
+<li><a href="http://www.yes24.com/24/goods/9179120?scode=029" target="_blank" rel="external">개발자가 반드시 정복해야 할 객체 지향과 디자인 패턴</a></li>
+<li><a href="https://www.youtube.com/watch?v=OfVwuWJSHOY&amp;list=PLagTY0ogyVkIl2kTr08w-4MLGYWJz7lNK&amp;index=16" target="_blank" rel="external">클린코더스 강의(14.2강 LSP)</a></li>
 </ul>
 
         </div>
@@ -184,7 +194,7 @@
 
 
 
-    <a data-url="http://choduk.github.io/2017/06/05/solid/solid-isp/" data-id="cj5jenbvk00231pj1lr0qddb2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://choduk.github.io/2017/06/04/solid/lsp/" data-id="cj5kisbfu000ewsj1uxqczhoe" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -289,20 +299,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/06/16/solid/solid-dip/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/06/05/solid/isp/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            SOLID - 의존관계 역전 원칙 (DIP)
+            SOLID - 인터페이스 분리 원칙 (ISP)
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/06/04/solid/solid-lsp/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/06/03/solid/ocp/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">SOLID - 리스코프 치환 원칙 (LSP)</p>
+        <p class="article-nav-title">SOLID - 개방 폐쇄 원칙 (OCP)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -321,7 +331,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/16/solid/solid-dip/" class="thumbnail">
+                            <a href="/2017/06/16/solid/dip/" class="thumbnail">
     
     
         <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png)" alt="SOLID - 의존관계 역전 원칙 (DIP)" class="thumbnail-image"></span>
@@ -333,7 +343,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/16/solid/solid-dip/" class="title">SOLID - 의존관계 역전 원칙 (DIP)</a></p>
+                            <p class="item-title"><a href="/2017/06/16/solid/dip/" class="title">SOLID - 의존관계 역전 원칙 (DIP)</a></p>
                             <p class="item-date"><time datetime="2017-06-15T15:00:00.000Z" itemprop="datePublished">2017-06-16</time></p>
                         </div>
                     </li>
@@ -341,7 +351,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/05/solid/solid-isp/" class="thumbnail">
+                            <a href="/2017/06/05/solid/isp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -353,7 +363,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/05/solid/solid-isp/" class="title">SOLID - 인터페이스 분리 원칙 (ISP)</a></p>
+                            <p class="item-title"><a href="/2017/06/05/solid/isp/" class="title">SOLID - 인터페이스 분리 원칙 (ISP)</a></p>
                             <p class="item-date"><time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time></p>
                         </div>
                     </li>
@@ -361,7 +371,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/04/solid/solid-lsp/" class="thumbnail">
+                            <a href="/2017/06/04/solid/lsp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -373,7 +383,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/04/solid/solid-lsp/" class="title">SOLID - 리스코프 치환 원칙 (LSP)</a></p>
+                            <p class="item-title"><a href="/2017/06/04/solid/lsp/" class="title">SOLID - 리스코프 치환 원칙 (LSP)</a></p>
                             <p class="item-date"><time datetime="2017-06-03T15:00:00.000Z" itemprop="datePublished">2017-06-04</time></p>
                         </div>
                     </li>
@@ -381,7 +391,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/03/solid/solid-ocp/" class="thumbnail">
+                            <a href="/2017/06/03/solid/ocp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -393,7 +403,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/03/solid/solid-ocp/" class="title">SOLID - 개방 폐쇄 원칙 (OCP)</a></p>
+                            <p class="item-title"><a href="/2017/06/03/solid/ocp/" class="title">SOLID - 개방 폐쇄 원칙 (OCP)</a></p>
                             <p class="item-date"><time datetime="2017-06-02T15:00:00.000Z" itemprop="datePublished">2017-06-03</time></p>
                         </div>
                     </li>
@@ -401,7 +411,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/05/29/solid/solid-srp/" class="thumbnail">
+                            <a href="/2017/05/29/solid/srp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -413,7 +423,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/05/29/solid/solid-srp/" class="title">SOLID - 단일 책임 원칙 (SRP)</a></p>
+                            <p class="item-title"><a href="/2017/05/29/solid/srp/" class="title">SOLID - 단일 책임 원칙 (SRP)</a></p>
                             <p class="item-date"><time datetime="2017-05-28T15:00:00.000Z" itemprop="datePublished">2017-05-29</time></p>
                         </div>
                     </li>
@@ -427,7 +437,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/SOLID/">SOLID</a><span class="category-list-count">5</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/SOLID/">SOLID</a><span class="category-list-count">5</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -437,7 +447,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -447,7 +457,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SOLID/">SOLID</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/behaviroal/">behaviroal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/creational/">creational</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/structural/">structural</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SOLID/">SOLID</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/behaviroal/">behaviroal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/creational/">creational</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/structural/">structural</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -457,7 +467,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/SOLID/" style="font-size: 20px;">SOLID</a> <a href="/tags/behaviroal/" style="font-size: 13.33px;">behaviroal</a> <a href="/tags/creational/" style="font-size: 10px;">creational</a> <a href="/tags/design-pattern/" style="font-size: 16.67px;">design pattern</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/structural/" style="font-size: 10px;">structural</a>
+            <a href="/tags/SOLID/" style="font-size: 20px;">SOLID</a> <a href="/tags/behaviroal/" style="font-size: 13.33px;">behaviroal</a> <a href="/tags/creational/" style="font-size: 10px;">creational</a> <a href="/tags/design-pattern/" style="font-size: 16.67px;">design pattern</a> <a href="/tags/structural/" style="font-size: 10px;">structural</a>
         </div>
     </div>
 
@@ -505,7 +515,7 @@
     var disqus_shortname = 'choduk';
     
     
-    var disqus_url = 'http://choduk.github.io/2017/06/05/solid/solid-isp/';
+    var disqus_url = 'http://choduk.github.io/2017/06/04/solid/lsp/';
     
     (function() {
     var dsq = document.createElement('script');

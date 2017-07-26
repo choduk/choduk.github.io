@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>SOLID - 인터페이스 분리 원칙 (ISP) | Hexo</title>
+    <title>SOLID - 의존관계 역전 원칙 (DIP) | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="SOLID" />
     
-    <meta name="description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+    <meta name="description" content="Dependency inversion principle 상위레벨 모듈이 하위레벨 모듈에 의존하면 안된다.  상위/하위 모듈 모두 추상화에 의존해야 한다. 추상화는 구현체를 의존하면 안된다.   중요한점 OO의 핵심이다. IoC를 통해 상위래밸의 모듈을 하위레벨 모듈로 부터 보호하는 것이다. 이를 통해 OCP를 지키고, 새로운 요구사항을 반영 가능  예제 l">
 <meta name="keywords" content="SOLID">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta property="og:url" content="http://choduk.github.io/2017/06/05/solid/solid-isp/index.html">
+<meta property="og:title" content="SOLID - 의존관계 역전 원칙 (DIP)">
+<meta property="og:url" content="http://choduk.github.io/2017/06/16/solid/dip/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta property="og:description" content="Dependency inversion principle 상위레벨 모듈이 하위레벨 모듈에 의존하면 안된다.  상위/하위 모듈 모두 추상화에 의존해야 한다. 추상화는 구현체를 의존하면 안된다.   중요한점 OO의 핵심이다. IoC를 통해 상위래밸의 모듈을 하위레벨 모듈로 부터 보호하는 것이다. 이를 통해 OCP를 지키고, 새로운 요구사항을 반영 가능  예제 l">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2017-07-25T10:16:18.000Z">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png">
+<meta property="og:updated_time" content="2017-07-25T10:16:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta name="twitter:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta name="twitter:title" content="SOLID - 의존관계 역전 원칙 (DIP)">
+<meta name="twitter:description" content="Dependency inversion principle 상위레벨 모듈이 하위레벨 모듈에 의존하면 안된다.  상위/하위 모듈 모두 추상화에 의존해야 한다. 추상화는 구현체를 의존하면 안된다.   중요한점 OO의 핵심이다. IoC를 통해 상위래밸의 모듈을 하위레벨 모듈로 부터 보호하는 것이다. 이를 통해 OCP를 지키고, 새로운 요구사항을 반영 가능  예제 l">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png">
     
 
     
@@ -69,7 +71,7 @@
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/">Develop</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/SOLID/">SOLID</a></li></ul></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/">Develop</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/SOLID/">SOLID</a></li></ul></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
@@ -132,14 +134,14 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-solid/solid-isp" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-solid/dip" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        SOLID - 인터페이스 분리 원칙 (ISP)
+        SOLID - 의존관계 역전 원칙 (DIP)
         </h1>
     
 
@@ -149,8 +151,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/05/solid/solid-isp/" class="article-date">
-            <time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time>
+        <a href="/2017/06/16/solid/dip/" class="article-date">
+            <time datetime="2017-06-15T15:00:00.000Z" itemprop="datePublished">2017-06-16</time>
         </a>
     </div>
 
@@ -164,18 +166,34 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="Interface-segregation-principle"><a href="#Interface-segregation-principle" class="headerlink" title="Interface segregation principle"></a>Interface segregation principle</h2><blockquote>
-<p>클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.</p>
+            <h2 id="Dependency-inversion-principle"><a href="#Dependency-inversion-principle" class="headerlink" title="Dependency inversion principle"></a>Dependency inversion principle</h2><blockquote>
+<p>상위레벨 모듈이 하위레벨 모듈에 의존하면 안된다.</p>
 <ul>
-<li>사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능</li>
-<li>사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화</li>
-<li>클라이언트 입장에서 인터페이스를 분리</li>
+<li>상위/하위 모듈 모두 추상화에 의존해야 한다.</li>
+<li>추상화는 구현체를 의존하면 안된다.</li>
 </ul>
 </blockquote>
-<h4 id="흔하디-흔한-스타크래프트-예제"><a href="#흔하디-흔한-스타크래프트-예제" class="headerlink" title="흔하디 흔한 스타크래프트 예제"></a>흔하디 흔한 스타크래프트 예제</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 메딕은 공격이 없는데??</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="개선된-코드"><a href="#개선된-코드" class="headerlink" title="개선된 코드"></a>개선된 코드</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span>, <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="comment">// ... 동일하므로 생략</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// attack()에 대해 의존하지 않음</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="중요한점"><a href="#중요한점" class="headerlink" title="중요한점"></a>중요한점</h5><ul>
+<li>OO의 핵심이다.</li>
+<li>IoC를 통해 상위래밸의 모듈을 하위레벨 모듈로 부터 보호하는 것이다.</li>
+<li>이를 통해 OCP를 지키고, 새로운 요구사항을 반영 가능</li>
+</ul>
+<h5 id="예제"><a href="#예제" class="headerlink" title="예제"></a>예제</h5><ul>
+<li>let) 편의상 Object A =&gt; A, Object B =&gt; B, interface A =&gt; a 라고 하자…<br><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png" alt="Dependency inversion">{: .center-image}</li>
+<li>Figure1 그림에서, A -&gt; B 방향으로 <code>Compile time</code> 의존성과 <code>Run time</code> 의존성을 갖고있다.</li>
+<li>Figure2 그림에서, A,B -&gt; a 방향으로 <code>Compile time</code> 의존성을 맺었지만, <code>Run time</code> 의존성은 그대로이다.</li>
+<li>즉, 더이상 A는 B로 의존하지 않으며, A,B 둘다 <code>Compile time</code>에 a에 의존하게 된다.</li>
+<li>이때, B의 <code>Compile time</code>의존성 방향이, A의 <code>Run time</code> 의존성 방향과 반대가 되게 된다.<h6 id="이와같이-소스-코드의-의존성-방향이-제어의-흐름과-반대-방향이-될-때-의존성이-역전됐다고-한다"><a href="#이와같이-소스-코드의-의존성-방향이-제어의-흐름과-반대-방향이-될-때-의존성이-역전됐다고-한다" class="headerlink" title="이와같이 소스 코드의 의존성 방향이 제어의 흐름과 반대 방향이 될 때, 의존성이 역전됐다고 한다."></a>이와같이 소스 코드의 의존성 방향이 제어의 흐름과 반대 방향이 될 때, 의존성이 역전됐다고 한다.</h6></li>
+</ul>
+<blockquote>
+<h6 id="DIP는-Run-time의존이-아닌-Compile-time-source-code-의존을-역전시킴으로써-변경의-유연함을-확보할-수-있도록-만들어주는-원칙이다"><a href="#DIP는-Run-time의존이-아닌-Compile-time-source-code-의존을-역전시킴으로써-변경의-유연함을-확보할-수-있도록-만들어주는-원칙이다" class="headerlink" title="DIP는 Run time의존이 아닌 Compile time (source code)의존을 역전시킴으로써 변경의 유연함을 확보할 수 있도록 만들어주는 원칙이다."></a>DIP는 <code>Run time</code>의존이 아닌 <code>Compile time (source code)</code>의존을 역전시킴으로써 변경의 유연함을 확보할 수 있도록 만들어주는 원칙이다.</h6></blockquote>
+<ul>
+<li>위 예제에서 <code>Package</code>를 보면, DIP가 적용됨에 따라, <code>interface</code>를 <code>Package A</code>에서 가져가게 되었다.</li>
+<li>즉, <code>interface</code> 타입을 가져감으로써 A와 B를 독립적으로 배포(jar, DLL 등)할 수 있도록 만들어 준다.</li>
+</ul>
 <h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
-<li><a href="https://www.youtube.com/watch?v=IIrjI7YUw6g&amp;list=PLagTY0ogyVkIl2kTr08w-4MLGYWJz7lNK&amp;index=17" target="_blank" rel="external">클린코더스 강의(14.3강 ISP)</a></li>
+<li><a href="http://www.yes24.com/24/goods/9179120?scode=029" target="_blank" rel="external">개발자가 반드시 정복해야 할 객체 지향과 디자인 패턴</a></li>
+<li><a href="https://www.youtube.com/watch?v=mI1PsrgogCw&amp;index=18&amp;list=PLagTY0ogyVkIl2kTr08w-4MLGYWJz7lNK" target="_blank" rel="external">클린코더스 강의(15.1강 DIP)</a></li>
 </ul>
 
         </div>
@@ -184,7 +202,7 @@
 
 
 
-    <a data-url="http://choduk.github.io/2017/06/05/solid/solid-isp/" data-id="cj5jenbvk00231pj1lr0qddb2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://choduk.github.io/2017/06/16/solid/dip/" data-id="cj5kisbfq000awsj1e9w8gbxz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -289,20 +307,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/06/16/solid/solid-dip/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            SOLID - 의존관계 역전 원칙 (DIP)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/06/04/solid/solid-lsp/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/06/05/solid/isp/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">SOLID - 리스코프 치환 원칙 (LSP)</p>
+        <p class="article-nav-title">SOLID - 인터페이스 분리 원칙 (ISP)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -321,7 +329,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/16/solid/solid-dip/" class="thumbnail">
+                            <a href="/2017/06/16/solid/dip/" class="thumbnail">
     
     
         <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png)" alt="SOLID - 의존관계 역전 원칙 (DIP)" class="thumbnail-image"></span>
@@ -333,7 +341,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/16/solid/solid-dip/" class="title">SOLID - 의존관계 역전 원칙 (DIP)</a></p>
+                            <p class="item-title"><a href="/2017/06/16/solid/dip/" class="title">SOLID - 의존관계 역전 원칙 (DIP)</a></p>
                             <p class="item-date"><time datetime="2017-06-15T15:00:00.000Z" itemprop="datePublished">2017-06-16</time></p>
                         </div>
                     </li>
@@ -341,7 +349,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/05/solid/solid-isp/" class="thumbnail">
+                            <a href="/2017/06/05/solid/isp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -353,7 +361,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/05/solid/solid-isp/" class="title">SOLID - 인터페이스 분리 원칙 (ISP)</a></p>
+                            <p class="item-title"><a href="/2017/06/05/solid/isp/" class="title">SOLID - 인터페이스 분리 원칙 (ISP)</a></p>
                             <p class="item-date"><time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time></p>
                         </div>
                     </li>
@@ -361,7 +369,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/04/solid/solid-lsp/" class="thumbnail">
+                            <a href="/2017/06/04/solid/lsp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -373,7 +381,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/04/solid/solid-lsp/" class="title">SOLID - 리스코프 치환 원칙 (LSP)</a></p>
+                            <p class="item-title"><a href="/2017/06/04/solid/lsp/" class="title">SOLID - 리스코프 치환 원칙 (LSP)</a></p>
                             <p class="item-date"><time datetime="2017-06-03T15:00:00.000Z" itemprop="datePublished">2017-06-04</time></p>
                         </div>
                     </li>
@@ -381,7 +389,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/06/03/solid/solid-ocp/" class="thumbnail">
+                            <a href="/2017/06/03/solid/ocp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -393,7 +401,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/06/03/solid/solid-ocp/" class="title">SOLID - 개방 폐쇄 원칙 (OCP)</a></p>
+                            <p class="item-title"><a href="/2017/06/03/solid/ocp/" class="title">SOLID - 개방 폐쇄 원칙 (OCP)</a></p>
                             <p class="item-date"><time datetime="2017-06-02T15:00:00.000Z" itemprop="datePublished">2017-06-03</time></p>
                         </div>
                     </li>
@@ -401,7 +409,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/05/29/solid/solid-srp/" class="thumbnail">
+                            <a href="/2017/05/29/solid/srp/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -413,7 +421,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
-                            <p class="item-title"><a href="/2017/05/29/solid/solid-srp/" class="title">SOLID - 단일 책임 원칙 (SRP)</a></p>
+                            <p class="item-title"><a href="/2017/05/29/solid/srp/" class="title">SOLID - 단일 책임 원칙 (SRP)</a></p>
                             <p class="item-date"><time datetime="2017-05-28T15:00:00.000Z" itemprop="datePublished">2017-05-29</time></p>
                         </div>
                     </li>
@@ -427,7 +435,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/SOLID/">SOLID</a><span class="category-list-count">5</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/SOLID/">SOLID</a><span class="category-list-count">5</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -437,7 +445,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -447,7 +455,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SOLID/">SOLID</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/behaviroal/">behaviroal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/creational/">creational</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/structural/">structural</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SOLID/">SOLID</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/behaviroal/">behaviroal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/creational/">creational</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/structural/">structural</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -457,7 +465,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/SOLID/" style="font-size: 20px;">SOLID</a> <a href="/tags/behaviroal/" style="font-size: 13.33px;">behaviroal</a> <a href="/tags/creational/" style="font-size: 10px;">creational</a> <a href="/tags/design-pattern/" style="font-size: 16.67px;">design pattern</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/structural/" style="font-size: 10px;">structural</a>
+            <a href="/tags/SOLID/" style="font-size: 20px;">SOLID</a> <a href="/tags/behaviroal/" style="font-size: 13.33px;">behaviroal</a> <a href="/tags/creational/" style="font-size: 10px;">creational</a> <a href="/tags/design-pattern/" style="font-size: 16.67px;">design pattern</a> <a href="/tags/structural/" style="font-size: 10px;">structural</a>
         </div>
     </div>
 
@@ -505,7 +513,7 @@
     var disqus_shortname = 'choduk';
     
     
-    var disqus_url = 'http://choduk.github.io/2017/06/05/solid/solid-isp/';
+    var disqus_url = 'http://choduk.github.io/2017/06/16/solid/dip/';
     
     (function() {
     var dsq = document.createElement('script');

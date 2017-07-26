@@ -3,16 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>아카이브: 2017/5 | Hexo</title>
+    <title>ABOUT | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://choduk.github.io/archives/2017/05/index.html">
+    <meta name="description" content="Hello world!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ABOUT">
+<meta property="og:url" content="http://choduk.github.io/about/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hello world!">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2017-07-25T10:31:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="ABOUT">
+<meta name="twitter:description" content="Hello world!">
     
 
     
@@ -121,293 +125,107 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>아카이브: 2017/5
+    <em class="page-title-link" data-url="/about/index.html">ABOUT</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/29/solid/srp/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/29/solid/srp/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a>
-            </div>
-            <div class="date"><time datetime="2017-05-28T15:00:00.000Z" itemprop="datePublished">2017-05-29</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/29/solid/srp/">SOLID - 단일 책임 원칙 (SRP)</a>
+        ABOUT
         </h1>
     
 
-        <p class="article-excerpt">
-            Single responsibility principle
-클래스는 하나의 책임만 가지며 클래스는 그 책임을 완전히 캡슐화 해야 한다.
+            </header>
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Hello world!</p>
 
-여러 책임을 갖고 있는 DataViewer 클래스1234567891011121314151617181920212223// 개발자가 반드시 정복해야 할 객체 지향과 디자인패턴(106page 예제)class DataViewer 
-        </p>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://choduk.github.io/about/index.html" data-id="cj5kisbct0000wsj1hrtcblg4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/19/design-pattern/behavioral-2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Observer.svg/500px-Observer.svg.png)" alt="Design Pattern - 행동패턴 (2)" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/19/design-pattern/behavioral-2/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
-            </div>
-            <div class="date"><time datetime="2017-05-18T15:00:00.000Z" itemprop="datePublished">2017-05-19</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/19/design-pattern/behavioral-2/">Design Pattern - 행동패턴 (2)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            7.Observer
-객체 사이에 1:N 의존관계를 맺고있으며, 한 객체의 상태가 변경되면 의존적인 다른 모든 객체들에게 통지하여 상태를 갱신할 수 있는 패턴
-
-구조{: .center-image}
-활용
-두개의 추상화 개념이 있고 하나가 다른 하나에 대해 종속적일때, 각각을 별도의 객체로 캡슐화하여 재사용할 수 있음
-한 객체에 변경으로 인해 다른 객체를 변경해
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
 
     
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/15/design-pattern/behavioral-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://fox.wikis.com/graphics/chain094.gif)" alt="Design Pattern - 행동패턴 (1)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/15/design-pattern/behavioral-1/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
-            </div>
-            <div class="date"><time datetime="2017-05-14T15:00:00.000Z" itemprop="datePublished">2017-05-15</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/15/design-pattern/behavioral-1/">Design Pattern - 행동패턴 (1)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            행동 패턴이란?책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴
-객체간의 교류방법에 대해 정의하여 런타임에 수행하기 어려운 복잡한 제어 구조를 패턴화 한 것
-
-
-1. Chain of Responsibility
-메시지를 보내고 처리하는 객체들 간의 커플링를 없애기 위한 패턴, 각 핸들러는 자신이 처리할 수 있으면 처리하고, 처리할 수 없으면 다
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/14/design-pattern/structural/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://prashantbrall.files.wordpress.com/2010/12/adapter-pattern-2.png?w=595)" alt="Design Pattern - 구조패턴" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/14/design-pattern/structural/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
-            </div>
-            <div class="date"><time datetime="2017-05-13T15:00:00.000Z" itemprop="datePublished">2017-05-14</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/14/design-pattern/structural/">Design Pattern - 구조패턴</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            구조 패턴이란?더 큰 구조를 형성하기 위해 어떻게 클래스와 객체를 합성하는지에 관련된 패턴
-인터페이스나 구현을 복합하는 것이 아니라 새로운 기능을 실현하기 위해 객체를 합성하는 방법을 제공하여 런타임에 복합 방법이나 대상을 변경할 수 있음
-
-
-1. Adapter
-클래스의 인터페이스를 원하는 형태로 변환하여, 서로 다른 인터페이스를 갖는 클래스들을 함께 동작
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/09/design-pattern/creational/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/8/8e/Factory_Method_UML_class_diagram.svg)" alt="Design Pattern - 생성패턴" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/09/design-pattern/creational/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
-            </div>
-            <div class="date"><time datetime="2017-05-08T15:00:00.000Z" itemprop="datePublished">2017-05-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/09/design-pattern/creational/">Design Pattern - 생성패턴</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            생성 패턴이란?인스턴스의 생성/합성 방법을 추상화하여 시스템이 어떤 서브클래스를 사용하지에 대한 정보를 캡슐화
-누가, 언제, 무엇을, 어떻게 생성할 것인지 결정하는 데 유연성을 확보할 수 있다
-
-
-1. Factory Method
-객체를 생성하기 위해 인터페이스를 정의하지만, 어떤 인스턴스를 생성할지에 대한 결정은 서브클래스에게 위임
-
-구조
-활용
-생성할 객체
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -633,11 +451,13 @@
     var disqus_shortname = 'choduk';
     
     
+    var disqus_url = 'http://choduk.github.io/about/index.html';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
