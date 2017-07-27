@@ -3,16 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>태그: behaviroal | Hexo</title>
+    <title>SpringBoot에 Multi Data Source 적용하기 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://choduk.github.io/tags/behaviroal/index.html">
+        <meta name="keywords" content="Spring Boot,Spring Data JPA" />
+    
+    <meta name="description" content="DataSource 설정123456789101112// application.yml// DB를 나누기 위해, 메모리 디비를 두개 띄운다app.datasource.blue:  url: jdbc:h2:mem:blue  username: sa  password: app.datasource.green:  url: jdbc:h2:mem:green  username:">
+<meta name="keywords" content="Spring Boot,Spring Data JPA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot에 Multi Data Source 적용하기">
+<meta property="og:url" content="http://choduk.github.io/2017/07/04/jpa/multi-data-source/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DataSource 설정123456789101112// application.yml// DB를 나누기 위해, 메모리 디비를 두개 띄운다app.datasource.blue:  url: jdbc:h2:mem:blue  username: sa  password: app.datasource.green:  url: jdbc:h2:mem:green  username:">
 <meta property="og:locale" content="ko">
+<meta property="og:image" content="http://choduk.github.io/images/jpa/folder-tree.png">
+<meta property="og:updated_time" content="2017-07-27T15:06:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="SpringBoot에 Multi Data Source 적용하기">
+<meta name="twitter:description" content="DataSource 설정123456789101112// application.yml// DB를 나누기 위해, 메모리 디비를 두개 띄운다app.datasource.blue:  url: jdbc:h2:mem:blue  username: sa  password: app.datasource.green:  url: jdbc:h2:mem:green  username:">
+<meta name="twitter:image" content="http://choduk.github.io/images/jpa/folder-tree.png">
     
 
     
@@ -121,130 +130,141 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>태그: <em>behaviroal</em>
+    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/Spring/">Spring</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-jpa/multi-data-source" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/19/design-pattern/behavioral-2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Observer.svg/500px-Observer.svg.png)" alt="Design Pattern - 행동패턴 (2)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/19/design-pattern/behavioral-2/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
-            </div>
-            <div class="date"><time datetime="2017-05-18T15:00:00.000Z" itemprop="datePublished">2017-05-19</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/19/design-pattern/behavioral-2/">Design Pattern - 행동패턴 (2)</a>
+        SpringBoot에 Multi Data Source 적용하기
         </h1>
     
 
-        <p class="article-excerpt">
-            7.Observer
-객체 사이에 1:N 의존관계를 맺고있으며, 한 객체의 상태가 변경되면 의존적인 다른 모든 객체들에게 통지하여 상태를 갱신할 수 있는 패턴
-
-구조{: .center-image}
-활용
-두개의 추상화 개념이 있고 하나가 다른 하나에 대해 종속적일때, 각각을 별도의 객체로 캡슐화하여 재사용할 수 있음
-한 객체에 변경으로 인해 다른 객체를 변경해
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/07/04/jpa/multi-data-source/" class="article-date">
+            <time datetime="2017-07-03T15:00:00.000Z" itemprop="datePublished">2017-07-04</time>
+        </a>
     </div>
-</article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2017/05/15/design-pattern/behavioral-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://fox.wikis.com/graphics/chain094.gif)" alt="Design Pattern - 행동패턴 (1)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2017/05/15/design-pattern/behavioral-1/">0</span>
-    
-</span>
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Spring-Boot/">Spring Boot</a>, <a class="tag-link" href="/tags/Spring-Data-JPA/">Spring Data JPA</a>
+    </div>
 
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a>
             </div>
-            <div class="date"><time datetime="2017-05-14T15:00:00.000Z" itemprop="datePublished">2017-05-15</time></div>
-        </div>
         
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/05/15/design-pattern/behavioral-1/">Design Pattern - 행동패턴 (1)</a>
-        </h1>
-    
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="DataSource-설정"><a href="#DataSource-설정" class="headerlink" title="DataSource 설정"></a>DataSource 설정</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">//</span> <span class="string">application.yml</span></div><div class="line"><span class="string">//</span> <span class="string">DB를</span> <span class="string">나누기</span> <span class="string">위해,</span> <span class="string">메모리</span> <span class="string">디비를</span> <span class="string">두개</span> <span class="string">띄운다</span></div><div class="line"></div><div class="line"><span class="string">app.datasource.blue:</span></div><div class="line"><span class="attr">  url:</span> <span class="attr">jdbc:h2:mem:blue</span></div><div class="line"><span class="attr">  username:</span> <span class="string">sa</span></div><div class="line"><span class="attr">  password:</span></div><div class="line"> </div><div class="line"><span class="string">app.datasource.green:</span></div><div class="line"><span class="attr">  url:</span> <span class="attr">jdbc:h2:mem:green</span></div><div class="line"><span class="attr">  username:</span> <span class="string">sa</span></div><div class="line"><span class="attr">  password:</span></div></pre></td></tr></table></figure>
+<h3 id="Package-Tree"><a href="#Package-Tree" class="headerlink" title="Package Tree"></a>Package Tree</h3><p><img src="/images/jpa/folder-tree.png" alt=""></p>
+<h3 id="DataSourceConfig"><a href="#DataSourceConfig" class="headerlink" title="DataSourceConfig"></a>DataSourceConfig</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableJpaRepositories</span>(</div><div class="line">        basePackages = &#123;BLUE_ENTITY_BASE_PACKAGES&#125;,</div><div class="line">        entityManagerFactoryRef = <span class="string">"blueEntityManagerFactory"</span>,</div><div class="line">        transactionManagerRef = <span class="string">"blueTransactionManager"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlueDataBaseConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BLUE_ENTITY_BASE_PACKAGES = <span class="string">"com.example.demo.blue"</span>;</div><div class="line">    <span class="comment">// 예제엔 Entity와 Repository가 같은 패키지에 있으므로, 위에 패키지 하나로 공유한다</span></div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="meta">@ConfigurationProperties</span>(<span class="string">"app.datasource.blue"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> DataSourceProperties <span class="title">blueDataSourceProperties</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DataSourceProperties();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">blueDataSource</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> blueDataSourceProperties().initializeDataSourceBuilder().build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="function"><span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title">blueEntityManagerFactory</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> builder</div><div class="line">                .dataSource(blueDataSource())</div><div class="line">                .packages(BLUE_ENTITY_BASE_PACKAGES)</div><div class="line">                .persistenceUnit(<span class="string">"blue"</span>)</div><div class="line">                .build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="function"><span class="keyword">public</span> PlatformTransactionManager <span class="title">blueTransactionManager</span><span class="params">(@Qualifier(<span class="string">"blueEntityManagerFactory"</span>)</span> EntityManagerFactory entityManagerFactory) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JpaTransactionManager(entityManagerFactory);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Blue, Green Config가 크게 다르지 않아서 생략.. 하단에 Github을 참고할것(Green에는 <code>@Primary</code>가 빠져있고, 이름만 green으로 시작함)</li>
+<li>단일 DataSouce에서 JPA의 <code>EntityManagerFactory</code>, <code>TransactionManager</code>가 존재하므로 이를 나눠줘야 함</li>
+<li>TransactionManager가 나뉘어졌으므로, <code>@Transcation</code>을 사용할때 주의할것</li>
+<li>SpringBoot 1.3.X 버전부터 <code>EntityManagerFactoryBuilder</code>의 패키지가 변경되었다 (org.springframework.boot.autoconfigure.orm.jpa.EntityManagerFactoryBuilder -&gt; org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder)</li>
+</ul>
+<h3 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h3><blockquote>
+<p>반드시 1개의 <code>DataSource</code>에 <code>@Primary</code>키워드를 붙여야 한다.</p>
+</blockquote>
+<h3 id="샘플"><a href="#샘플" class="headerlink" title="샘플"></a>샘플</h3><ul>
+<li><a href="https://github.com/choduk/springboot-two-datasource" target="_blank" rel="external">Github 예제코드</a></li>
+<li></li>
+</ul>
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
+<li><a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-two-datasources" target="_blank" rel="external">Spring.io 공식문서</a></li>
+</ul>
 
-        <p class="article-excerpt">
-            행동 패턴이란?책임 및 알고리즘을 어떤 객체에 할당하는 것이 좋은지 다룬 패턴
-객체간의 교류방법에 대해 정의하여 런타임에 수행하기 어려운 복잡한 제어 구조를 패턴화 한 것
+        </div>
+        <footer class="article-footer">
+            
 
 
-1. Chain of Responsibility
-메시지를 보내고 처리하는 객체들 간의 커플링를 없애기 위한 패턴, 각 핸들러는 자신이 처리할 수 있으면 처리하고, 처리할 수 없으면 다
-        </p>
+
+    <a data-url="http://choduk.github.io/2017/07/04/jpa/multi-data-source/" data-id="cj5mkqsqt0001uhs6vaet7c5j" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -273,6 +293,19 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/06/16/solid/dip/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">SOLID - 의존관계 역전 원칙 (DIP)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -470,11 +503,13 @@
     var disqus_shortname = 'choduk';
     
     
+    var disqus_url = 'http://choduk.github.io/2017/07/04/jpa/multi-data-source/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
