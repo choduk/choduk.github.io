@@ -13,23 +13,18 @@ customize:
         url: images/logo-header.png
     theme_color: '#006bde'
     highlight: androidstudio
-    sidebar: left # sidebar position, options: left, right
+    sidebar: right # sidebar position, options: left, right
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
-        twitter: /
-        facebook: /
-        google-plus: /
-        github: https://github.com/ppoffice/hexo-theme-hueman
-        weibo: /
-        rss: /
+        github: https://github.com/choduk
+        rss: / # TODO
 
 # Widgets
 widgets:
     - recent_posts
     - category
     - archive
-    - tag
     - tagcloud
     - links
 
@@ -42,14 +37,6 @@ search:
 # Comment
 comment:
     disqus: choduk # enter disqus shortname here
-    duoshuo: # enter duoshuo shortname here
-    youyan: # enter youyan uid here
-    facebook: # enter true to enable
-    isso: # enter the domain name of your own comment isso server eg. comments.example.com
-    changyan:
-        appId: # enter the changyan appId here
-        appKey: # enter the changyan appKey here
-        on: # enter true to enable
 
 # Share
 share: default # options: jiathis, bdshare, addtoany, default
@@ -58,7 +45,7 @@ share: default # options: jiathis, bdshare, addtoany, default
 plugins:
     lightgallery: true # options: true, false
     justifiedgallery: true # options: true, false
-    google_analytics: # enter the tracking ID for your Google Analytics
+    google_analytics: UA-98691641-1 # enter the tracking ID for your Google Analytics
     baidu_analytics: # enter Baidu Analytics hash key
     mathjax: false # options: true, false
 
