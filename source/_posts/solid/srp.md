@@ -89,7 +89,8 @@ class DataViewer {
  - `DataLoader`, `DataDisplayer` 두 클래스가 변경되면, `DataViewer` 클래스가 영향을 받는다.
 
 ### 개선방안
- - `DataLoader`, `DataDisplayer`를 `interface`로 변경하여 의존성을 역전시킨다.
+ - `DataLoader`, `DataDisplayer`를 `Aggregation`으로 변경한다.
+ - 즉, 외부에서 의존성 주입을 한다. (객체간 life cycle 다름) 
 
 ##### 개선된 코드 2
 ```java
