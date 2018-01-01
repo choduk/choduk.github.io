@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React boilerplate 만들기 | Duk Dev Note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="react,babel,webpack,env" />
+    
+    <meta name="description" content="React + babel + webpack 으로 boilerplate 생성 정리 프론트 알 못이라… 이번 기회에 각 용어와 셋팅 방법을 정리해보려고 한다   목차 들어가기 전에.. 프로젝트 생성 webpack 설치 bebel 설치 webpack 설정 react webpack plugin 추가   들어가기 전에.. webpack 이란?  js 파일을 하나로">
+<meta name="keywords" content="react,babel,webpack,env">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React boilerplate 만들기">
+<meta property="og:url" content="http://choduk.github.io/2018/01/01/react/react-env/index.html">
+<meta property="og:site_name" content="Duk Dev Note">
+<meta property="og:description" content="React + babel + webpack 으로 boilerplate 생성 정리 프론트 알 못이라… 이번 기회에 각 용어와 셋팅 방법을 정리해보려고 한다   목차 들어가기 전에.. 프로젝트 생성 webpack 설치 bebel 설치 webpack 설정 react webpack plugin 추가   들어가기 전에.. webpack 이란?  js 파일을 하나로">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-01-01T16:38:50.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React boilerplate 만들기">
+<meta name="twitter:description" content="React + babel + webpack 으로 boilerplate 생성 정리 프론트 알 못이라… 이번 기회에 각 용어와 셋팅 방법을 정리해보려고 한다   목차 들어가기 전에.. 프로젝트 생성 webpack 설치 bebel 설치 webpack 설정 react webpack plugin 추가   들어가기 전에.. webpack 이란?  js 파일을 하나로">
+    
+
+    
+        <link rel="alternate" href="/" title="Duk Dev Note" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-98691641-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/">Develop</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Front-End/">Front-End</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/SOLID/">SOLID</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Develop/Spring/">Spring</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/Front-End/">Front-End</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-react/react-env" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        React boilerplate 만들기
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/01/01/react/react-env/" class="article-date">
+            <time datetime="2017-12-31T15:00:00.000Z" itemprop="datePublished">2018-01-01</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/babel/">babel</a>, <a class="tag-link" href="/tags/env/">env</a>, <a class="tag-link" href="/tags/react/">react</a>, <a class="tag-link" href="/tags/webpack/">webpack</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="React-babel-webpack-으로-boilerplate-생성-정리"><a href="#React-babel-webpack-으로-boilerplate-생성-정리" class="headerlink" title="React + babel + webpack 으로 boilerplate 생성 정리"></a>React + babel + webpack 으로 boilerplate 생성 정리</h2><blockquote>
+<p>프론트 알 못이라… 이번 기회에 각 용어와 셋팅 방법을 정리해보려고 한다 </p>
+</blockquote>
+<h4 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h4><ul>
+<li>들어가기 전에..</li>
+<li>프로젝트 생성</li>
+<li>webpack 설치</li>
+<li>bebel 설치</li>
+<li>webpack 설정</li>
+<li>react</li>
+<li>webpack plugin 추가</li>
+</ul>
+<hr>
+<h3 id="들어가기-전에"><a href="#들어가기-전에" class="headerlink" title="들어가기 전에.."></a>들어가기 전에..</h3><ol>
+<li><p>webpack 이란?</p>
+<ul>
+<li>js 파일을 하나로 번들링 해준다 (웹페이지 요청시 request 숫자를 줄일 수 있다)</li>
+<li>npm 패키지를 Front-end에서 사용할 수 있다</li>
+<li>ES6, ES7 등 더 많은 기능을 쓸 수 있다</li>
+<li>불필요한 파일을 빼고 번들링이 가능하다</li>
+<li>less, scss 등을 사용할 수 있다 (css로 변경 가능)</li>
+<li>Hot Module Replacement 를 사용할 수 있다</li>
+<li>어떤 파일이던 js파일에 넣어준다</li>
+</ul>
+</li>
+<li><p>babel 이란?</p>
+<ul>
+<li>ES6, ES7으로 작성된 코드들을 ES5코드로 transpiling 해주는것</li>
+<li>다양한 모듈을 담는 역할을 하며, 코드를 transpiling 하기위해 작은 모듈(presets)을 사용한다</li>
+<li><code>babel-cli</code> : transpiling 수행</li>
+<li><code>babel-register</code> : 각 모듈을 결합할 때 사용 (production 용이 아니다)</li>
+<li><code>.babelrc</code> : 바벨 설정 파일(설정하지 않으면 단순히 파일을 옮기는 작업만 수행)</li>
+<li><code>babel-polyfill</code> : ES6 환경 제공</li>
+<li><code>babel-plugins</code> : babel에 여러 transform-plugin을 추가, <code>.babelrc</code>에서 설정하여도 되고 webpack에서 설정해도 된다</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>transpiling 이란? 한 언어로 작성된 소스코드를 비슷한 수준의 추상화를 가진 다른언어로 변환하는 방법 (ex: typescript -&gt; javascript)</p>
+</blockquote>
+<p>즉 ES6/ES7으로 작성한 js파일을 babel을 통해 transpiling 되고, webpack이 이를 하나의 js파일로 번들링 해준다</p>
+<ol>
+<li>npm 이란?<ul>
+<li>Node Package Modules 의 약자</li>
+<li>node.js의 패키지 관리툴로서 자바스크립트로 패키지된 모듈들을 쉽게 공유할 수 있도록 도와주는 오픈소스 프로젝트</li>
+<li>개발자가 어떤 패키지를 쉽게 설치하고 퍼블리싱 할 수 있는 command line client</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="프로젝트-생성"><a href="#프로젝트-생성" class="headerlink" title="프로젝트 생성"></a>프로젝트 생성</h3><p>(npm은 pc에 설치되어있다고 가정하고 진행)<br>비어있는 boilerplate <code>폴더 생성</code>후 <code>npm</code>을 init한다<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> mkdir react-boilerplate &amp;&amp; cd react-boilerplate</div><div class="line"><span class="meta">$</span> npm init -y</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="webpack-설치"><a href="#webpack-설치" class="headerlink" title="webpack 설치"></a>webpack 설치</h3><p>위에서 생성한 폴더에 <code>npm</code>을 이용해 <code>webpack</code>을 설치하고 webpack 설정 파일(<code>webpack.config.js</code>)을 생성한다<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm i webpack --save-dev</div><div class="line"><span class="meta">$</span> touch webpack.config.js</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="babel-설치"><a href="#babel-설치" class="headerlink" title="babel 설치"></a>babel 설치</h3><p>마찬가지로 <code>npm</code>을 이용해 <code>babel</code>과 관련된 코어모듈을 함께 설치하고 babel 설정파일(<code>.babelrc</code>)을 생성한다<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm i babel-loader babel-core babel-preset-env babel-preset-react --save-dev</div><div class="line"><span class="meta">$</span> touch .babelrc</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>주의! babel-preset-es2015는 deprecated 되었으므로 babel-preset-env를 쓰자</p>
+</blockquote>
+<p>위에 만든 <code>.babelrc</code>파일에 다음과 같이 설정한다<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [&quot;env&quot;, &quot;react&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="webpack-설정"><a href="#webpack-설정" class="headerlink" title="webpack 설정"></a>webpack 설정</h3><p>아까 위에서 만든 <code>webpack.config.js</code>파일을 열어서 다음과 같이 설정한다<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: [<span class="string">'./src/app/App.js'</span>],</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">'dist'</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">'bundle.js'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">rules</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'babel-loader'</span>,</div><div class="line">        <span class="attr">exclude</span>: [<span class="string">'/node_modules/'</span>]</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>위 <code>webpack.config.js</code>설정에서 entry point를 <code>./src/app.js</code>에 만들었으므로, 해당 파일을 하나 만들자</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> mkdir -p src/app &amp;&amp; touch ./src/app/App.js</div></pre></td></tr></table></figure>
+<p>여기까지 만든 이후, <code>webpack</code>이 정상 작동을 하는지 테스트 한번 해보자<br><code>package.json</code>파일을 열어서 다음과 같이 추가한다</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// package.json</div><div class="line">&#123;</div><div class="line">  // ...생략</div><div class="line">  "scripts": &#123;</div><div class="line">    "build": "webpack"</div><div class="line">  &#125;</div><div class="line">  // ...생략</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>이후 아래를 명령어를 입력했을때 <code>webpack</code>설정에 적혀있듯이, <code>dist</code>폴더 하단에 <code>bundle.js</code>로 정상적으로 만들어 지는지 확인하자<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm run build</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>위와 마찬가지로 <code>npm</code>을 이용하여 <code>react</code>와 <code>react-dom</code>을 설치한다</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm i react react-dom --save-dev</div></pre></td></tr></table></figure>
+<p>이제 react를 구성하기 위한 간단한 Hello App을 만든다</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> mkdir public &amp;&amp; touch public/index.html</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">!-</span> <span class="attr">public</span>/<span class="attr">index.html</span> <span class="attr">-</span>&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>React App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// src/app/App.js</span></div><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">title</span>: <span class="string">"Hello App"</span></div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;this.state.title&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span>, document.getElementById('container'));</span></div></pre></td></tr></table></figure>
+<hr>
+<h3 id="webpack-plugin-추가"><a href="#webpack-plugin-추가" class="headerlink" title="webpack plugin 추가"></a>webpack plugin 추가</h3><h5 id="HTML-webpack-plugin"><a href="#HTML-webpack-plugin" class="headerlink" title="HTML webpack plugin"></a>HTML webpack plugin</h5><p><code>public/index.html</code>에 자동으로 <code>&lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</code> 태그를 넣어 줄 수 있도록 plugin을 추가한다</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm i html-webpack-plugin html-loader --save-dev</div></pre></td></tr></table></figure>
+<p><code>webpack.config.js</code> 파일 하단에 플러그인을 넣어준다<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> HtmlWebPackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// .. 생략 </span></div><div class="line">  ,</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> HtmlWebPackPlugin(&#123;</div><div class="line">      <span class="attr">template</span>: <span class="string">"./public/index.html"</span>,</div><div class="line">      <span class="attr">filename</span>: <span class="string">"./index.html"</span></div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>이후 <code>npm run build</code> 명령어를 실행하여, <code>dist</code>폴더 하단에 <code>bundle.js</code>와 <code>index.html</code>이 생성되는지 확인하고 <code>index.html</code>에 <code>&lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</code> 가 들어가 있는지 확인하자</p>
+<h5 id="webpack-Dev-Server"><a href="#webpack-Dev-Server" class="headerlink" title="webpack Dev Server"></a>webpack Dev Server</h5><p>간편한 개발을 위해 dev server 플러그인을 설정한다</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm i webpack-dev-server --save-dev</div></pre></td></tr></table></figure>
+<p><code>webpack.config.js</code> 에 devServer 설정을, <code>package.json</code>엔 실행 스크립트를 추가한다</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> HtmlWebPackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// .. 생략 </span></div><div class="line">  devServer: &#123;</div><div class="line">    <span class="attr">port</span>: <span class="number">3000</span>,</div><div class="line">    <span class="attr">contentBase</span>: <span class="string">"./dist"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// .. 생략</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// package.json</div><div class="line">&#123;</div><div class="line">  // ...생략</div><div class="line">  "scripts": &#123;</div><div class="line">    "start": "webpack-dev-server",</div><div class="line">    "build": "webpack"</div><div class="line">  &#125;</div><div class="line">  // ...생략</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>npm run start</code>로 서버를 실행하고, 브라우저에서 <code>localhost:3000</code>으로 접속하여 Hello App이 뜨는걸 확인</p>
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
+<li><a href="https://www.valentinog.com/blog/react-webpack-babel/" target="_blank" rel="external">react-webpack-babel</a></li>
+<li><a href="http://kleopetrov.me/2016/03/18/everything-about-babel/" target="_blank" rel="external">kleopetrov blog</a></li>
+<li><a href="https://www.zerocho.com/category/Webpack/post/58aa916d745ca90018e5301d" target="_blank" rel="external">webpack3 설정</a></li>
+<li><a href="https://marmelab.com/blog/2015/12/17/react-directory-structure.html" target="_blank" rel="external">react directory structure</a></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://choduk.github.io/2018/01/01/react/react-env/" data-id="cjbvre67p0000dzs6sg1tif7d" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/choduk" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/07/04/jpa/multi-data-source/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">SpringBoot에 Multi Data Source 적용하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/01/react/react-env/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Front-End/">Front-End</a></p>
+                            <p class="item-title"><a href="/2018/01/01/react/react-env/" class="title">React boilerplate 만들기</a></p>
+                            <p class="item-date"><time datetime="2017-12-31T15:00:00.000Z" itemprop="datePublished">2018-01-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/04/jpa/multi-data-source/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/jpa/folder-tree.png)" alt="SpringBoot에 Multi Data Source 적용하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2017/07/04/jpa/multi-data-source/" class="title">SpringBoot에 Multi Data Source 적용하기</a></p>
+                            <p class="item-date"><time datetime="2017-07-03T15:00:00.000Z" itemprop="datePublished">2017-07-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/16/solid/dip/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/9/96/Dependency_inversion.png)" alt="SOLID - 의존관계 역전 원칙 (DIP)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/16/solid/dip/" class="title">SOLID - 의존관계 역전 원칙 (DIP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-15T15:00:00.000Z" itemprop="datePublished">2017-06-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/05/solid/isp/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/05/solid/isp/" class="title">SOLID - 인터페이스 분리 원칙 (ISP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/04/solid/lsp/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/SOLID/">SOLID</a></p>
+                            <p class="item-title"><a href="/2017/06/04/solid/lsp/" class="title">SOLID - 리스코프 치환 원칙 (LSP)</a></p>
+                            <p class="item-date"><time datetime="2017-06-03T15:00:00.000Z" itemprop="datePublished">2017-06-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/">Develop</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Design-Pattern/">Design Pattern</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Front-End/">Front-End</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/SOLID/">SOLID</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Develop/Spring/">Spring</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">1월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/SOLID/" style="font-size: 20px;">SOLID</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/Spring-Data-JPA/" style="font-size: 10px;">Spring Data JPA</a> <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/behaviroal/" style="font-size: 13.33px;">behaviroal</a> <a href="/tags/creational/" style="font-size: 10px;">creational</a> <a href="/tags/design-pattern/" style="font-size: 16.67px;">design pattern</a> <a href="/tags/env/" style="font-size: 10px;">env</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/structural/" style="font-size: 10px;">structural</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Duk</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'choduk';
+    
+    
+    var disqus_url = 'http://choduk.github.io/2018/01/01/react/react-env/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
