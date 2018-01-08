@@ -3,23 +3,16 @@
 <head>
     <meta charset="utf-8">
     
-    <title>SOLID - 인터페이스 분리 원칙 (ISP) | Duk Dev Note</title>
+    <title>카테고리: JAVA | Duk Dev Note</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="SOLID" />
-    
-    <meta name="description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
-<meta name="keywords" content="SOLID">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta property="og:url" content="http://choduk.github.io/2017/06/05/solid/isp/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Duk Dev Note">
+<meta property="og:url" content="http://choduk.github.io/categories/Develop/JAVA/index.html">
 <meta property="og:site_name" content="Duk Dev Note">
-<meta property="og:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2017-10-17T08:11:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta name="twitter:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta name="twitter:title" content="Duk Dev Note">
     
 
     
@@ -139,135 +132,140 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/SOLID/">SOLID</a>
+    <i class="icon fa fa-folder-open"></i>카테고리: <em class="page-title-link">JAVA</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-solid/isp" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/01/07/java/garbage-collection-1/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://d2.naver.com/content/images/2015/06/helloworld-329631-2.png)" alt="Java Garbage Collection (1)" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2018/01/07/java/garbage-collection-1/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/JAVA/">JAVA</a>
+            </div>
+            <div class="date"><time datetime="2018-01-06T15:00:00.000Z" itemprop="datePublished">2018-01-07</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        SOLID - 인터페이스 분리 원칙 (ISP)
+        <a href="/2018/01/07/java/garbage-collection-1/">Java Garbage Collection (1)</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <a href="/2017/06/05/solid/isp/" class="article-date">
-            <time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time>
-        </a>
-    </div>
+        <p class="article-excerpt">
+            GC가 하는일
+Heap 내에서 사용되지 않는 Object를 찾는다
+해당 메모리를 회수한다
 
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/SOLID/">SOLID</a>
-    </div>
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <h2 id="Interface-segregation-principle"><a href="#Interface-segregation-principle" class="headerlink" title="Interface segregation principle"></a>Interface segregation principle</h2><blockquote>
-<p>클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.</p>
-<ul>
-<li>사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능</li>
-<li>사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화</li>
-<li>클라이언트 입장에서 인터페이스를 분리</li>
-</ul>
-</blockquote>
-<h4 id="흔하디-흔한-스타크래프트-예제"><a href="#흔하디-흔한-스타크래프트-예제" class="headerlink" title="흔하디 흔한 스타크래프트 예제"></a>흔하디 흔한 스타크래프트 예제</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 메딕은 공격이 없는데??</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="개선된-코드"><a href="#개선된-코드" class="headerlink" title="개선된 코드"></a>개선된 코드</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span>, <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="comment">// ... 동일하므로 생략</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// attack()에 대해 의존하지 않음</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
-<li><a href="https://www.youtube.com/watch?v=IIrjI7YUw6g&amp;list=PLagTY0ogyVkIl2kTr08w-4MLGYWJz7lNK&amp;index=17" target="_blank" rel="external">클린코더스 강의(14.3강 ISP)</a></li>
-</ul>
-
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://choduk.github.io/2017/06/05/solid/isp/" data-id="cjc6hjnlq000g8is68ciuqrk7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+들어가기 전에… 용어정리
+STW(Stop The World) : JVM이 GC를 실행하는 Thread를 제외한 나머지 모든 Thread를 멈추는것
+Reachable : 어떤 객체 유효한 참조가 있을때
+Unreachable : 어떤 객체에 유효한 참조가 없을때
+Root
+        </p>
     </div>
 </article>
+    
 
-    <section id="comments">
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/01/07/java/garbage-collection-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.slidesharecdn.com/javaoptimizationtwjug-131222104941-phpapp01/95/introduction-of-java-gc-tuning-and-java-java-mission-control-60-1024.jpg?cb=1387709567)" alt="Java Garbage Collection (2)" class="thumbnail-image"></span>
+    
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://choduk.github.io/2018/01/07/java/garbage-collection-2/">0</span>
+    
+</span>
+
 
     
-    </section>
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Develop/JAVA/">JAVA</a>
+            </div>
+            <div class="date"><time datetime="2018-01-06T15:00:00.000Z" itemprop="datePublished">2018-01-07</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/01/07/java/garbage-collection-2/">Java Garbage Collection (2)</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Old GC
+Serial GC
+Parallel GC
+Parallel Old GC
+CMS GC (Concurrent Mark &amp; Sweep GC)
+G1 GC (Garbage First GC)
+
+
+Serial GC
+
+Young 영역에서는 기본적인 GC 동작방식을 그대로 따름
+Old 영역에 대해서 mark-sweep-compact 알고리즘을 이용
+해당 G
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
+
 
 
                         </div>
@@ -296,29 +294,6 @@ ga('send', 'pageview');
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2017/06/16/solid/dip/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            SOLID - 의존관계 역전 원칙 (DIP)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2017/06/04/solid/lsp/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">SOLID - 리스코프 치환 원칙 (LSP)</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -506,13 +481,11 @@ ga('send', 'pageview');
     var disqus_shortname = 'choduk';
     
     
-    var disqus_url = 'http://choduk.github.io/2017/06/05/solid/isp/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>SOLID - 인터페이스 분리 원칙 (ISP) | Duk Dev Note</title>
+    <title>Java Garbage Collection (1) | Duk Dev Note</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="SOLID" />
+        <meta name="keywords" content="GC" />
     
-    <meta name="description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
-<meta name="keywords" content="SOLID">
+    <meta name="description" content="GC가 하는일 Heap 내에서 사용되지 않는 Object를 찾는다 해당 메모리를 회수한다  들어가기 전에… 용어정리 STW(Stop The World) : JVM이 GC를 실행하는 Thread를 제외한 나머지 모든 Thread를 멈추는것 Reachable : 어떤 객체 유효한 참조가 있을때 Unreachable : 어떤 객체에 유효한 참조가 없을때 Root">
+<meta name="keywords" content="GC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta property="og:url" content="http://choduk.github.io/2017/06/05/solid/isp/index.html">
+<meta property="og:title" content="Java Garbage Collection (1)">
+<meta property="og:url" content="http://choduk.github.io/2018/01/07/java/garbage-collection-1/index.html">
 <meta property="og:site_name" content="Duk Dev Note">
-<meta property="og:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta property="og:description" content="GC가 하는일 Heap 내에서 사용되지 않는 Object를 찾는다 해당 메모리를 회수한다  들어가기 전에… 용어정리 STW(Stop The World) : JVM이 GC를 실행하는 Thread를 제외한 나머지 모든 Thread를 멈추는것 Reachable : 어떤 객체 유효한 참조가 있을때 Unreachable : 어떤 객체에 유효한 참조가 없을때 Root">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2017-10-17T08:11:59.000Z">
+<meta property="og:image" content="http://d2.naver.com/content/images/2015/06/helloworld-329631-2.png">
+<meta property="og:updated_time" content="2018-01-08T17:35:37.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SOLID - 인터페이스 분리 원칙 (ISP)">
-<meta name="twitter:description" content="Interface segregation principle 클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.  사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능 사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화 클라이언트 입장에서 인터페이스를 분리   흔하디 흔한 스타크래">
+<meta name="twitter:title" content="Java Garbage Collection (1)">
+<meta name="twitter:description" content="GC가 하는일 Heap 내에서 사용되지 않는 Object를 찾는다 해당 메모리를 회수한다  들어가기 전에… 용어정리 STW(Stop The World) : JVM이 GC를 실행하는 Thread를 제외한 나머지 모든 Thread를 멈추는것 Reachable : 어떤 객체 유효한 참조가 있을때 Unreachable : 어떤 객체에 유효한 참조가 없을때 Root">
+<meta name="twitter:image" content="http://d2.naver.com/content/images/2015/06/helloworld-329631-2.png">
     
 
     
@@ -139,18 +141,18 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/SOLID/">SOLID</a>
+    <a class="page-title-link" href="/categories/Develop/">Develop</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Develop/JAVA/">JAVA</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-solid/isp" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-java/garbage-collection-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        SOLID - 인터페이스 분리 원칙 (ISP)
+        Java Garbage Collection (1)
         </h1>
     
 
@@ -160,33 +162,121 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/05/solid/isp/" class="article-date">
-            <time datetime="2017-06-04T15:00:00.000Z" itemprop="datePublished">2017-06-05</time>
+        <a href="/2018/01/07/java/garbage-collection-1/" class="article-date">
+            <time datetime="2018-01-06T15:00:00.000Z" itemprop="datePublished">2018-01-07</time>
         </a>
     </div>
 
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/SOLID/">SOLID</a>
+        <a class="tag-link" href="/tags/GC/">GC</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="Interface-segregation-principle"><a href="#Interface-segregation-principle" class="headerlink" title="Interface segregation principle"></a>Interface segregation principle</h2><blockquote>
-<p>클라이언트는 자신이 사용하는 메서드에만 의존해야 한다.</p>
+            <h4 id="GC가-하는일"><a href="#GC가-하는일" class="headerlink" title="GC가 하는일"></a>GC가 하는일</h4><ul>
+<li>Heap 내에서 사용되지 않는 Object를 찾는다</li>
+<li>해당 메모리를 회수한다</li>
+</ul>
+<h4 id="들어가기-전에…-용어정리"><a href="#들어가기-전에…-용어정리" class="headerlink" title="들어가기 전에… 용어정리"></a>들어가기 전에… 용어정리</h4><ul>
+<li>STW(Stop The World) : JVM이 GC를 실행하는 Thread를 제외한 나머지 모든 Thread를 멈추는것</li>
+<li>Reachable : 어떤 객체 유효한 참조가 있을때</li>
+<li>Unreachable : 어떤 객체에 유효한 참조가 없을때</li>
+<li>Root set : 객체의 참조여부를 파악하기 위한 최초의 유효한 참조<br><img src="http://d2.naver.com/content/images/2015/06/helloworld-329631-2.png" alt="Reachable/Unreachable 객체"></li>
+</ul>
+<h4 id="GC-기본-프로세스"><a href="#GC-기본-프로세스" class="headerlink" title="GC 기본 프로세스"></a>GC 기본 프로세스</h4><ol>
+<li>Step1. Marking<ul>
+<li><img src="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide3.png" alt="Marking"></li>
+<li>GC가 Unreachable Object를 찾아낸다</li>
+<li>이때 모든 객체를 스캔하므로 시간이 오래걸린다</li>
+</ul>
+</li>
+<li>Step2. Normal Deletion<ul>
+<li><img src="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide1b.png" alt="Normal Deletion"></li>
+<li>Unreachable Object를 삭제한다</li>
+<li>제거된 객체의 포인터를 남겨두었다가, 추후 새로운 객체가 할당되면 해당 위치에 추가한다</li>
+</ul>
+</li>
+<li>Step3.  Compacting<ul>
+<li><img src="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide4.png" alt="Compacting"></li>
+<li>성능을 위해 Reachable Object를 묶는다</li>
+<li>Compacting을 과정을 수행함으로써, 삭제된 객체들 사이에 발생한 Fragmentation 문제와 재할당이 쉬워진다(마지막에만 객체를 추가하면됨)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="비효율적인-프로세스"><a href="#비효율적인-프로세스" class="headerlink" title="비효율적인 프로세스"></a>비효율적인 프로세스</h4><p><img src="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/ObjectLifetime.gif" alt="Object Life Time"><br>위에 명시한 GC의 기본 프로세스는 모든 객체를 스캔해야 하므로 비효율적이다. 위 표를 보면, 일반적인 애플리케이션에서 대부분의 객체의 LifeTime이 짧다. 때문에 Heap을 더 작은 파트(Young, Old, Permanent)로 나누어 퍼포먼스를 향상시킬 수 있다.</p>
+<blockquote>
+<p>Weak generational hypothesis</p>
 <ul>
-<li>사용하지 않는 의존성을 갖고 있다면 인터페이스 변경시 재컴파일/빌드/배포가 필요하므로 독립적인 개발/배포 불가능</li>
-<li>사용하는 기능만 제공하도록 인터페이스를 분리하여, 사이드이펙트 최소화</li>
-<li>클라이언트 입장에서 인터페이스를 분리</li>
+<li>대부분의 객체는 금방 접근 불가능 상태가 된다(unreachable)</li>
+<li>오래된 객체에서젊은 객체로의 참조는 아주 적게 존재한다</li>
 </ul>
 </blockquote>
-<h4 id="흔하디-흔한-스타크래프트-예제"><a href="#흔하디-흔한-스타크래프트-예제" class="headerlink" title="흔하디 흔한 스타크래프트 예제"></a>흔하디 흔한 스타크래프트 예제</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 메딕은 공격이 없는데??</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="개선된-코드"><a href="#개선된-코드" class="headerlink" title="개선된 코드"></a>개선된 코드</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Unit</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Marine</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span>, <span class="title">Attackable</span> </span>&#123;</div><div class="line">  <span class="comment">// ... 동일하므로 생략</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Medic</span> <span class="keyword">implements</span> <span class="title">Unit</span>, <span class="title">Movable</span> </span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// ... 생략</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// attack()에 대해 의존하지 않음</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
-<li><a href="https://www.youtube.com/watch?v=IIrjI7YUw6g&amp;list=PLagTY0ogyVkIl2kTr08w-4MLGYWJz7lNK&amp;index=17" target="_blank" rel="external">클린코더스 강의(14.3강 ISP)</a></li>
+<hr>
+<h4 id="Oracle-HotSpot-Heap-Structure"><a href="#Oracle-HotSpot-Heap-Structure" class="headerlink" title="Oracle HotSpot Heap Structure"></a>Oracle HotSpot Heap Structure</h4><p><img src="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/images/gcslides/Slide5.png" alt="HotSpot Heap Structure"></p>
+<ul>
+<li>Young 영역 (Young Generation)</li>
+<li>Old 영역 (Old Generation)</li>
+<li>Permanent 영역 (Permanent Generation)</li>
+</ul>
+<hr>
+<h5 id="HotSpot-VM에서-더-빠른-메모리-할당을-위해-사용하는-방법"><a href="#HotSpot-VM에서-더-빠른-메모리-할당을-위해-사용하는-방법" class="headerlink" title="HotSpot VM에서 더 빠른 메모리 할당을 위해 사용하는 방법"></a>HotSpot VM에서 더 빠른 메모리 할당을 위해 사용하는 방법</h5><ul>
+<li>TLAB (Thread Local Allocation Buffers)<ul>
+<li>각 Thread에 <code>Eden</code>영역에 작은 부분을 미리 할당</li>
+<li>각 Thread들은 자신이 갖고있는 TLAB에만 접근할 수 있다. </li>
+<li>활성화 옵션 -&gt; <code>-XX:+UseTLAB</code></li>
+</ul>
+</li>
+<li>Bump the Pointer Allocation<ul>
+<li><code>Eden</code>영역에 할당된 마지막 객체의 위치를 추적 (<code>Eden</code>의 맨위에 존재)</li>
+<li>새로 할당할 객체가 <code>Eden</code>영역에 넣을 수 있는 크기인지 판단<blockquote>
+<p>Multi Thread 환경에서 Thread들이 <code>Eden</code>영역에 저장하려면 <code>Lock</code>이 발생해야하지만, TLAB을 통해 각자의 영역에 저장하므로, <code>Lock</code>없이 가능하다.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="Young-영역"><a href="#Young-영역" class="headerlink" title="Young 영역"></a>Young 영역</h5><p>객체가 가장 먼저 생성되는 영역으로, <code>Eden</code>영역과 2개의 <code>Survivor</code>영역으로 구성되어있다. 해당 영역에서 이뤄지는 GC를 <code>Minor GC</code>라고 한다</p>
+<h6 id="Young-영역의-처리-순서"><a href="#Young-영역의-처리-순서" class="headerlink" title="Young 영역의 처리 순서"></a>Young 영역의 처리 순서</h6><ol>
+<li>새로 생성되는 대부분의 객체는 대부분 <code>Eden</code>에 생성</li>
+<li><code>Eden</code>에서 GC가 발생 -&gt; 살아남은 객체는 <code>Survivor</code> 영역중 한곳으로 이동</li>
+<li>동일한 <code>Survivor</code> 영역이 꽉 찰때까지 <code>2</code>번 반복</li>
+<li><code>Survivor</code>에서 GC 발생 -&gt; 살아남은 객체는 다른 <code>Survivor</code>영역으로 이동, 이때 두개의 <code>Survivor</code>영역중 한곳은 <code>반드시</code> 비어있어야 한다</li>
+<li>1~4 과정을 반복하다가, 지속적으로 살아남은 객체는 <code>Old</code> 영역으로 이동 (<code>promotion</code>)</li>
+</ol>
+<hr>
+<h5 id="Old-영역"><a href="#Old-영역" class="headerlink" title="Old 영역"></a>Old 영역</h5><p>위 <code>Young</code> 영역에서 지속적인 GC에도 살아남은 객체들이 모이는 영역으로, 이곳에서 이뤄지는 GC를 <code>Full GC</code>라고 한다. <code>Full GC</code>는 <code>Minor GC</code>에 비해 <code>STW</code>시간이 훨씬 길기 때문에, 성능에 큰 영향을 끼친다. </p>
+<h6 id="Old-영역-GC-종류"><a href="#Old-영역-GC-종류" class="headerlink" title="Old 영역 GC 종류"></a>Old 영역 GC 종류</h6><ul>
+<li>Serial GC</li>
+<li>Parallel GC / Parallel Old GC</li>
+<li>CMS GC (Concurrent Mark &amp; Sweep GC)</li>
+<li>G1 GC (Garbage First GC)</li>
+</ul>
+<hr>
+<h5 id="Permanent-영역"><a href="#Permanent-영역" class="headerlink" title="Permanent 영역"></a>Permanent 영역</h5><p>Heap 메모리 영역중 하나로, 애플리케이션이 실행될때 클래스의 메타데이터를 저장하는 영역</p>
+<ul>
+<li>Class의  Meta 정보(이름, 패키지 주소 등)</li>
+<li>Method의 Meta 정보</li>
+<li>상수 string / static object 등</li>
+<li>JVM 내부 객체 / 컴파일러 최적화 정보(JIT)</li>
+<li>등등..</li>
+</ul>
+<p>무분별한 Static Object의 사용과, HotDeploy로 인한 Meta Data 증가로 <code>PermGen Space OOM</code>를 방지하고자, 해당 영역을 <code>java8</code>    부터 삭제하였다.</p>
+<ul>
+<li>Class / Method의 메타데이터 / JVM 내부 객체 및 컴파일러 최적화 정보 -&gt; MetaSpace로 이동</li>
+<li>상수 string / static object -&gt; Heap으로 이동</li>
+</ul>
+<hr>
+<h4 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h4><ul>
+<li><a href="http://d2.naver.com/helloworld/329631" target="_blank" rel="external">NAVER helloworld blog</a></li>
+<li><a href="http://d2.naver.com/helloworld/1329" target="_blank" rel="external">NAVER helloworld blog</a></li>
+<li><a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html" target="_blank" rel="external">Oracle java garbage collection basics</a></li>
+<li><a href="http://sarc.io/index.php/java/794-tlab-thread-local-allocation-buffers-plab-promotion-local-allocation-buffers" target="_blank" rel="external">삵 blog</a></li>
 </ul>
 
         </div>
@@ -195,7 +285,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="http://choduk.github.io/2017/06/05/solid/isp/" data-id="cjc6hjnlq000g8is68ciuqrk7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://choduk.github.io/2018/01/07/java/garbage-collection-1/" data-id="cjc6hjnlf00018is64svg0ite" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -300,20 +390,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/06/16/solid/dip/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            SOLID - 의존관계 역전 원칙 (DIP)
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/06/04/solid/lsp/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/01/07/java/garbage-collection-2/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">SOLID - 리스코프 치환 원칙 (LSP)</p>
+        <p class="article-nav-title">Java Garbage Collection (2)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -506,7 +586,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'choduk';
     
     
-    var disqus_url = 'http://choduk.github.io/2017/06/05/solid/isp/';
+    var disqus_url = 'http://choduk.github.io/2018/01/07/java/garbage-collection-1/';
     
     (function() {
     var dsq = document.createElement('script');
